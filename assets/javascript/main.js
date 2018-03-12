@@ -6,6 +6,7 @@
  *    db         | (Firebase database)  
 **/
 
+
 //NAV BAR
 $(document).ready(function() {
   // Initialize collapse button
