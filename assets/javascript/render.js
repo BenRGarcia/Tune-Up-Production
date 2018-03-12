@@ -127,5 +127,10 @@ const DOM = {
       // Materialize CSS method to re-render dropdown options
       $('select').material_select();
     }
+  },
+  renderTimeline(doIneedAnArgument){
+    /*
+     *  Melissa: Code to dynamically render timeline details goes here
+    **/
   }
 };
