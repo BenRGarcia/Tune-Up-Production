@@ -8,6 +8,7 @@ $(function() {
 
 function initializeGarage() {
   firebase.auth().onAuthStateChanged(function(user) {
+    // User is signed in
     if (user){
       var uid = user.uid;
       // Call db object's method to return an object of all of user's car objects
@@ -17,6 +18,9 @@ function initializeGarage() {
       }, function(err) {
       console.log(err); // Errors are logged in the console
       });
+    } else {
+      // User not signed in, redirect to home page
+      window.location.replace("https://benrgarcia.github.io/Tune-Up-Production/")
     }
   });
 }
@@ -24,6 +28,7 @@ function initializeGarage() {
 // When user signs out
 $('#js-sign-out').click( function() {
   userAuth.signOut();
+  window.location.replace("https://benrgarcia.github.io/Tune-Up-Production/");
 });
 
 //DISPLAY CAR DETAILS
