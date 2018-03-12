@@ -70,13 +70,13 @@ $('body').on('click',".js-get-all-cars",function(){
 });
 
 //DELETE USER'S CAR
-$('body').on('click','#js-delete-car',function(){
+$('body').on('click','.js-delete-car',function(){
   var uid = userAuth.getUid;
-  var carKey = $(this).data("data-car-key");
+  var carKey = $(this).data("car-key");
    
   // Call db object's method to delete a car
   db.deleteCar(uid, carKey).then( function(response) {
-    DOM.renderCars(response);
+    initializeGarage();
     console.log(response); // 'response' is the deleted car's carKey
   }, function(err) {
     console.log(err); // Errors are logged in the console
