@@ -70,13 +70,13 @@ const DOM = {
 
       // Convert to human readable dates if present
       if (carInspection) {
-        carInspection   = dateConverter.unixTimeTommddyyyy(object.carInspectionUnixTime);
+        carInspection = dateConverter.unixTimeTommddyyyy(object.carInspectionUnixTime);
       }
       if (brakeInspection) {
-        dateConverter.unixTimeTommddyyyy(object.brakeInspectionUnixTime);
+        brakeInspection = dateConverter.unixTimeTommddyyyy(object.brakeInspectionUnixTime);
       }
       if (wiperBlades) {
-        dateConverter.unixTimeTommddyyyy(object.wiperBladesUnixTime);
+        wiperBlades = dateConverter.unixTimeTommddyyyy(object.wiperBladesUnixTime);
       }
 
       // Update DOM
