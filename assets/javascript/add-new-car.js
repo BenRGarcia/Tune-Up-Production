@@ -32,8 +32,17 @@
 // jQuery on ready
 $( function() {
 
+  // Disable all but the 'year'
+  $('#js-add-car-make').attr("disabled", "disabled");
+  $('#js-add-car-model').attr("disabled", "disabled");
+  $('#js-add-car-mileage').attr("disabled", "disabled");
+
   // When user chooses a year
   $('body').on('change',"#js-add-car-year",function(event){
+    // Remove disabled class from car make
+    $('#js-add-car-make').removeAttr("disabled");
+    $('select').material_select();
+
     // If both make and year selected
     if ($(this).val() && $('#js-add-car-make').val()) {
       let year = $(this).val();
@@ -50,6 +59,10 @@ $( function() {
 
   // When user chooses a make
   $('body').on('change',"#js-add-car-make",function(event){
+    // Remove disabled class from car model
+    $('#js-add-car-model').removeAttr("disabled");
+    $('select').material_select();
+
     // If both make and year selected
     if ($(this).val() && $('#js-add-car-year').val()) {
       let make = $(this).val();
@@ -65,17 +78,15 @@ $( function() {
   });
 
   // When user chooses a model
-  $('body').on('change',"#js-add-car-model",function(event){
-    console.log($(this).val());
-  });
-
-  // When user chooses submit (plus sign)
-  $('body').on('change',"#js-add-car-mileage",function(event){
-    console.log($(this).val());
+  $('body').on('change', '#js-add-car-model', function(event) {
+    // Remove disabled class from car mileage
+    $('#js-add-car-mileage').removeAttr("disabled");
+    $('select').material_select();
   });
 
   // When user submits form
   $('body').on('submit',"form",function(event){
     event.preventDefault();
+    console.log(event);
   });
 });
