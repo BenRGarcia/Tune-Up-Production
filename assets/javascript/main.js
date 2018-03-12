@@ -143,7 +143,13 @@ $('body').on('submit','#js-update-interval-oil-change-form',function(event){
      
       // Call db object's method to update the maintenance interval for oil
       db.updateIntervalOilChange(uid, carKey, newInterval).then( function(response) {
-        DOM.renderMaintenanceIntervals(response);
+        // DOM.renderMaintenanceIntervals(response);
+
+        db.getMaintenanceIntervals(uid, carKey).then( function(response) {
+          DOM.renderMaintenanceIntervals(response)
+        }, function (err) {
+          console.log(err)
+        });
         // console.log(response); // 'response' is an object of updated interval for oil
       }, function(err) {
         console.log(err); // Errors are logged in the console
