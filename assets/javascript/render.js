@@ -126,6 +126,9 @@ const DOM = {
       $('select').material_select();
     }
   },
+  renderMileage(carObject) {
+    return $('#js-update-mileage').attr("placeholder", carObject.mileage);
+  },
   renderTimeline(doIneedAnArgument){
     /*
      *  Melissa: Code to dynamically render timeline details goes here
