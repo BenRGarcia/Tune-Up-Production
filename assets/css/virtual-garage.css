@@ -2,6 +2,15 @@
   margin-bottom: .25rem !important;
 }
 
+.pb-2 {
+  padding-bottom: .5rem !important;
+}
+
 .row {
   margin-bottom: 3rem;
+}
+
+.col {
+  border: 1px solid #000;
+  border-radius: 4px;
 }
