@@ -308,8 +308,13 @@ $('body').on('submit','#js-update-last-oil-change-form',function(event){
 
       // Call db object's method to update the last maintenance of oil
       db.updateLastOilChange(uid, carKey, mileage).then( function(response) {
-        DOM.renderLastMaintenance(response);
-        console.log(response); // 'response' is an object of last maintenance of oil
+        // DOM.renderLastMaintenance(response);
+        db.getLastMaintenance(uid, carKey).then( function(response) {
+          DOM.renderLastMaintenance(response);
+        }, function(err){
+          console.log(err);
+        });
+        // console.log(response); // 'response' is an object of last maintenance of oil
       }, function(err) {
         console.log(err); // Errors are logged in the console
       });
@@ -337,8 +342,13 @@ $('body').on('submit','#js-update-last-tire-rotation-form',function(event){
 
       // Call db object's method to update the last maintenance of tire rotation
       db.updateLastTireRotation(uid, carKey, mileage).then( function(response) {
-        DOM.renderLastMaintenance(response);
-        console.log(response); // 'response' is an object of last maintenance of tire rotation
+        // DOM.renderLastMaintenance(response);
+        db.getLastMaintenance(uid, carKey).then( function(response) {
+          DOM.renderLastMaintenance(response);
+        }, function(err){
+          console.log(err);
+        });
+        // console.log(response); // 'response' is an object of last maintenance of tire rotation
       }, function(err) {
         console.log(err); // Errors are logged in the console
       });
@@ -347,13 +357,15 @@ $('body').on('submit','#js-update-last-tire-rotation-form',function(event){
 });
 
 //UPDATE LAST MAINTENANCE FOR CAR INSPECTION
-$('body').on('submit','#js-update-last-car-inspection-form',function(event){
+$('body').on('change','#js-update-last-car-inspection-form',function(event){
   event.preventDefault();
+  console.log(`Date was submitted`);
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
     // Get user input
     let date = $('#js-update-last-car-inspection').val();
+    console.log(date);
 
     // Ignore empty inputs
     if (date) {
@@ -369,8 +381,13 @@ $('body').on('submit','#js-update-last-car-inspection-form',function(event){
 
       // Call db object's method to update the last maintenance of car inspection
       db.updateLastCarInspection(uid, carKey, unixDate).then( function(response) {
-        DOM.renderLastMaintenance(response);
-        console.log(response); // 'response' is an object of last maintenance of car inspection
+        // DOM.renderLastMaintenance(response);
+        db.getLastMaintenance(uid, carKey).then( function(response) {
+          DOM.renderLastMaintenance(response);
+        }, function(err){
+          console.log(err);
+        });
+        // console.log(response); // 'response' is an object of last maintenance of car inspection
       }, function(err) {
         console.log(err); // Errors are logged in the console
       });
@@ -401,8 +418,13 @@ $('body').on('submit','#js-update-last-wiper-blades-form',function(event){
 
       // Call db object's method to update the last maintenance of wiper blades
       db.updateLastWiperBlades(uid, carKey, unixDate).then( function(response) {
-        DOM.renderLastMaintenance(response);
-        console.log(response); // 'response' is an object of last maintenance of wiper blades
+        // DOM.renderLastMaintenance(response);
+        db.getLastMaintenance(uid, carKey).then( function(response) {
+          DOM.renderLastMaintenance(response);
+        }, function(err){
+          console.log(err);
+        });
+        // console.log(response); // 'response' is an object of last maintenance of wiper blades
       }, function(err) {
         console.log(err); // Errors are logged in the console
       });
@@ -411,13 +433,14 @@ $('body').on('submit','#js-update-last-wiper-blades-form',function(event){
 });
 
 //UPDATE LAST MAINTENANCE FOR BRAKES
-$('body').on('submit','#js-update-last-brake-inspection-form',function(event){
+$('body').on('value','#js-update-last-brake-inspection-form',function(event){
   event.preventDefault();
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
     // Get user input
     let date = $('#js-update-last-brake-inspection').val();
+    console.log(date);
 
     // Ignore empty input
     if (date) {
@@ -433,8 +456,13 @@ $('body').on('submit','#js-update-last-brake-inspection-form',function(event){
 
       // Call db object's method to update the last maintenance of brake inspection
       db.updateLastBrakeInspection(uid, carKey, unixDate).then( function(response) {
-        DOM.renderLastMaintenance(response);
-        console.log(response); // 'response' is an object of last maintenance of brake inspection
+        // DOM.renderLastMaintenance(response);
+        db.getLastMaintenance(uid, carKey).then( function(response) {
+          DOM.renderLastMaintenance(response);
+        }, function(err){
+          console.log(err);
+        });
+        // console.log(response); // 'response' is an object of last maintenance of brake inspection
       }, function(err) {
         console.log(err); // Errors are logged in the console
       });
