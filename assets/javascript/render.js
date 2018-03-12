@@ -58,24 +58,37 @@ const DOM = {
   },
   renderLastMaintenance(object) {
 
+    console.log(object);
+
     // Ignore empty object
     if (object) {
 
       // Convert Unix time to MMDDYYYY format
 
       // Declare variables
-      let lastOilChange       = object.oilChange;
-      let lastTireRotation    = object.tireRotation;
-      let lastCarInspection   = object.carInpectionUnixTime;
-      let lastBrakeInspection = object.brakeInspectionUnixTime;
-      let lastWiperBlades     = object.wiperBladesUnixTime;
+      let oilChange       = object.oilChange;
+      let tireRotation    = object.tireRotation;
+      let carInspection   = object.carInspectionUnixTime;
+      let brakeInspection = object.brakeInspectionUnixTime;
+      let wiperBlades     = object.wiperBladesUnixTime;
+
+      // Convert to human readable dates if present
+      if (carInspection) {
+        carInspection   = dateConverter.unixTimeTommddyyyy(object.carInspectionUnixTime);
+      }
+      if (brakeInspection) {
+        dateConverter.unixTimeTommddyyyy(object.brakeInspectionUnixTime);
+      }
+      if (wiperBlades) {
+        dateConverter.unixTimeTommddyyyy(object.wiperBladesUnixTime);
+      }
 
       // Update DOM
-      $('#js-display-last-oil-change').text(lastOilChange                   || "-");
-      $('#js-display-last-tire-rotation').text(lastTireRotation             || "-");
-      $('#js-display-last-car-inspection').text(lastCarInspection           || "-");
-      $('#js-display-last-brake-inspection').text(lastBrakeInspection       || "-");
-      $('#js-display-last-wiper-blades').text(lastWiperBlades               || "-");
+      $('#js-display-last-oil-change').text(oilChange                   || "-");
+      $('#js-display-last-tire-rotation').text(tireRotation             || "-");
+      $('#js-display-last-car-inspection').text(carInspection           || "-");
+      $('#js-display-last-brake-inspection').text(brakeInspection       || "-");
+      $('#js-display-last-wiper-blades').text(wiperBlades               || "-");
       
 
       // After lastMaintenance object rendered
