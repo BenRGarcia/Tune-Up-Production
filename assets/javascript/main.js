@@ -358,14 +358,11 @@ $('body').on('submit','#js-update-last-tire-rotation-form',function(event){
 
 //UPDATE LAST MAINTENANCE FOR CAR INSPECTION
 $('body').on('change','#js-update-last-car-inspection-form',function(event){
-  event.preventDefault();
-  console.log(`Date was submitted`);
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
     // Get user input
     let date = $('#js-update-last-car-inspection').val();
-    console.log(date);
 
     // Ignore empty inputs
     if (date) {
@@ -396,8 +393,7 @@ $('body').on('change','#js-update-last-car-inspection-form',function(event){
 });
 
 //UPDATE LAST MAINTENANCE FOR WIPER BLADES
-$('body').on('submit','#js-update-last-wiper-blades-form',function(event){
-  event.preventDefault();
+$('body').on('change','#js-update-last-wiper-blades-form', function(event){
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
@@ -433,8 +429,8 @@ $('body').on('submit','#js-update-last-wiper-blades-form',function(event){
 });
 
 //UPDATE LAST MAINTENANCE FOR BRAKES
-$('body').on('value','#js-update-last-brake-inspection-form',function(event){
-  event.preventDefault();
+$('body').on('change','#js-update-last-brake-inspection-form',function(event){
+  console.log('I was called')
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
