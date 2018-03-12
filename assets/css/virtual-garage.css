@@ -9,3 +9,6 @@
 .row {
   margin-bottom: 3rem;
 }
+.wide {
+  min-width: 90%;
+}
