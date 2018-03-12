@@ -69,7 +69,6 @@ const DOM = {
        *    1) carInpectionUnixTime
        *    2) brakeInspectionUnixTime
        *    3) wiperBladesUnixTime
-       * 
       **/
      let inspectionDate = $('#js-last-inspection-date').val();
      let brakeDate = $('#js-last-brake-date').val();
@@ -96,11 +95,9 @@ const DOM = {
       $('#js-display-last-car-inspection').text(lastCarInspection           || "-");
       $('#js-display-last-brake-inspection').text(lastBrakeInspection       || "-");
       $('#js-display-last-wiper-blades').text(lastWiperBlades               || "-");
-      $('.events').append(carInspectionTimeline).text("CAR ISNPECTION"      || "-");
+      $('.events').append(carInspectionTimeline).text("CAR INSPECTION"      || "-");
       $('.events').append(brakeInspectionTimeline).text("BRAKE INSPECTION"  || "-");
       $('.events').append(wiperBladeTimeline).text("CHECK WIPER BLADE"      || "-");
-      
-
 
       // After lastMaintenance object rendered
       return object;
