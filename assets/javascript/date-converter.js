@@ -10,7 +10,7 @@ const dateConverter = {
 
   unixTimeTommddyyyy :
     function(unixTime) {
-      var unix = moment.unix(unitTime)._d;
+      var unix = moment.unix(unixTime)._d;
       var unixFormat = moment(unix).format("MM/DD/YYYY");
         console.log(unixFormat, "Convert to Date");
     return mmddyyyy;
