@@ -70,17 +70,21 @@ const DOM = {
        *    2) brakeInspectionUnixTime
        *    3) wiperBladesUnixTime
       **/
-     let inspectionDate = $('#js-last-inspection-date').val();
-     let brakeDate = $('#js-last-brake-date').val();
-     let wiperBladeDate = $('#js-last-wiper-date').val();
 
-     let carInpectionUnixTime = dateConverter.unixTimeTommddyyyy(inspectionDate);
-     let brakeInpectionUnixTime = dateConverter.unixTimeTommddyyyy(brakeDate);
-     let wiperBladesUnixTime = dateConverter.unixTimeTommddyyyy(wiperBladeDate);
+      // Broken code, a reminder to get this:
+      $('js-display-cars-detail').text(year + " " + make + " " + model);
 
-     let carInspectionTimeline = carInpectionUnixTime.data("date");
-     let brakeInspectionTimeline = brakeInpectionUnixTime.data("date");
-     let wiperBladeTimeline = wiperBladesUnixTime.data("date");
+      let inspectionDate = $('#js-last-inspection-date').val();
+      let brakeDate = $('#js-last-brake-date').val();
+      let wiperBladeDate = $('#js-last-wiper-date').val();
+
+      let carInpectionUnixTime = dateConverter.unixTimeTommddyyyy(inspectionDate);
+      let brakeInpectionUnixTime = dateConverter.unixTimeTommddyyyy(brakeDate);
+      let wiperBladesUnixTime = dateConverter.unixTimeTommddyyyy(wiperBladeDate);
+
+      let carInspectionTimeline = carInpectionUnixTime.data("date");
+      let brakeInspectionTimeline = brakeInpectionUnixTime.data("date");
+      let wiperBladeTimeline = wiperBladesUnixTime.data("date");
 
       // Declare variables
       let lastOilChange       = object.oilChange;
