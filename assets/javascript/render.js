@@ -58,12 +58,8 @@ const DOM = {
   },
   renderLastMaintenance(object) {
 
-    console.log(object);
-
     // Ignore empty object
     if (object) {
-
-      // Convert Unix time to MMDDYYYY format
 
       // Declare variables
       let oilChange       = object.oilChange;
@@ -89,7 +85,6 @@ const DOM = {
       $('#js-display-last-car-inspection').text(carInspection           || "-");
       $('#js-display-last-brake-inspection').text(brakeInspection       || "-");
       $('#js-display-last-wiper-blades').text(wiperBlades               || "-");
-      
 
       // After lastMaintenance object rendered
       return object;
