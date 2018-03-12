@@ -76,6 +76,7 @@ const DOM = {
       $('#js-display-last-car-inspection').text(lastCarInspection           || "-");
       $('#js-display-last-brake-inspection').text(lastBrakeInspection       || "-");
       $('#js-display-last-wiper-blades').text(lastWiperBlades               || "-");
+      
 
       // After lastMaintenance object rendered
       return object;
@@ -92,11 +93,11 @@ const DOM = {
     if (object) {
 
       // Declare variables
-      let intOilChange       = object.oilChange;
-      let intTireRotation    = object.tireRotation;
-      let intCarInspection   = object.carInspectionMonths;
-      let intBrakeInspection = object.brakeInspectionMonths;
-      let intWiperBlades     = object.wiperBladesMonths;
+      let intOilChange       = object.oilChange + " miles";
+      let intTireRotation    = object.tireRotation + " miles";
+      let intCarInspection   = object.carInspectionMonths + " months";
+      let intBrakeInspection = object.brakeInspectionMonths + " months";
+      let intWiperBlades     = object.wiperBladesMonths + " months";
 
       // Update DOM input placeholder text
       $('#js-update-interval-oil-change').attr("placeholder", intOilChange);
