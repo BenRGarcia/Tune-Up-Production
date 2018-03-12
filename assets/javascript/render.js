@@ -116,7 +116,19 @@ const DOM = {
   renderDropDownModels(modelArray) {
     // Ignore empty modelArrays
     if (modelArray) {
-      console.log(modelArray);
+      console.log(`if statement`);
+      // Iterate over car models in array
+      for (let i = 0; i < modelArray.length; i++) {
+        console.log(modelArray[i]);
+        // Create new option element
+        let option = $('<option>');
+        // Add value attribute and inner text
+        option.attr("value", modelArray[i]);
+        option.text(modelArray[i]);
+        // Append to list
+        $('#js-add-car-model').append(option);
+      }
+      $('select').material_select();
     }
   }
 };
