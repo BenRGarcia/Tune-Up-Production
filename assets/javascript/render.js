@@ -72,7 +72,7 @@ const DOM = {
       **/
 
       // Broken code, a reminder to get this:
-      $('js-display-cars-detail').text(year + " " + make + " " + model);
+      // $('js-display-cars-detail').text(year + " " + make + " " + model);
 
       let inspectionDate = $('#js-last-inspection-date').val();
       let brakeDate = $('#js-last-brake-date').val();
