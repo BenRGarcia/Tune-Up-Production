@@ -1,11 +1,13 @@
 const dateConverter = {
 
   mmddyyyyToUnixTime : 
-   function(mmddyyyy){
-    var date = mmddyyyy;
-    var unixTime = new Date(date).getTime() / 1000;
-    console.log(unixTime, "Convert to Unix");
-    return unixTime;
+   // Establish format of passed argument
+   let format = "MM/DD/YYYY";
+   // Convert Date for moment.js
+   let convertedDate = moment(mmddyyyy, format);
+   // Reformat date as Unix Time
+   let unixTime = moment(convertedDate).format("X");
+   return unixTime;
   },
 
   unixTimeTommddyyyy :
