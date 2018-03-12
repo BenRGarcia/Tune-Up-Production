@@ -60,7 +60,7 @@ $('body').on('click',".js-car-in-garage",function(){
 
   // Update mileage display
   db.getAllUserCars(uid, carKey).then( function(response) {
-    console.log(response[selectedCarKey]); // 'response' will be the 'car objects' object
+    // console.log(response[selectedCarKey]); // 'response' will be the 'car objects' object
     DOM.renderMileage(response[selectedCarKey]);
   }, function(err) {
     console.log(err); // Errors are logged in the console
@@ -115,7 +115,7 @@ $('body').on('submit','#js-update-mileage-form',function(event){
       db.updateMileage(uid, carKey, newMileage).then( function(response) {
         DOM.renderLastMaintenance(response);
         DOM.renderMileage(response)
-        console.log(response); // 'response' is an object of updated mileage
+        // console.log(response); // 'response' is an object of updated mileage
       }, function(err) {
         console.log(err); // Errors are logged in the console
       });
@@ -181,7 +181,7 @@ $('body').on('submit','#js-update-interval-tire-rotation-form',function(event){
       }, function (err) {
         console.log(err)
       });
-        console.log(response); // 'response' is an object of updated interval for oil
+        // console.log(response); // 'response' is an object of updated interval for oil
       }, function(err) {
         console.log(err); // Errors are logged in the console
       });
@@ -214,7 +214,7 @@ $('body').on('submit','#js-update-interval-car-inspection-form',function(event){
       }, function (err) {
         console.log(err)
       });
-        console.log(response); // 'response' is an object of updated interval for car inspection months
+        // console.log(response); // 'response' is an object of updated interval for car inspection months
       }, function(err) {
         console.log(err); // Errors are logged in the console
       });
@@ -247,7 +247,7 @@ $('body').on('submit','#js-update-interval-wiper-blades-form',function(event){
       }, function (err) {
         console.log(err)
       });
-        console.log(response); // 'response' is an object of updated interval for wiper blades
+        // console.log(response); // 'response' is an object of updated interval for wiper blades
       }, function(err) {
         console.log(err); // Errors are logged in the console
       });
@@ -280,7 +280,7 @@ $('body').on('submit','#js-update-interval-brake-inspection-form',function(event
       }, function (err) {
         console.log(err)
       });
-        console.log(response); // 'response' is an object of updated interval for brake inspection
+        // console.log(response); // 'response' is an object of updated interval for brake inspection
       }, function(err) {
         console.log(err); // Errors are logged in the console
       });
