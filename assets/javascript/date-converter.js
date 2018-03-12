@@ -2,7 +2,7 @@ const dateConverter = {
 
   mmddyyyyToUnixTime(mmddyyyy) { 
    // Establish format of passed argument
-   let format = "MM/DD/YYYY";
+   let format = "YYYY/MM/DD";
    // Convert Date for moment.js
    let convertedDate = moment(mmddyyyy, format);
    // Reformat date as Unix Time
