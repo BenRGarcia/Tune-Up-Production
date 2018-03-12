@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tune Up</title>
+
+  <!-- Firebase CDN -->
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <!-- Firebase Config/Initialization -->
+  <script src="./assets/javascript/firebase-config.js"></script>
+  <!-- Firebase Authentication CDN -->
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+  <!-- Firebase Authentication -->
+  <script src="./assets/javascript/firebase-user.js"></script>
+  <!-- Firebase Database -->
+  <script src="./assets/javascript/firebase-db.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Firebase Authentication CSS -->
+  <link 
+    type="text/css" 
+    rel="stylesheet" 
+    href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css"
+  />
+
+  <!-- Material Icons for Materialize -->
+  <link 
+    href="https://fonts.googleapis.com/icon?family=Material+Icons" 
+    rel="stylesheet"
+  >
+
+  <!-- Materialize CSS -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" 
+    media="screen,projection"
+  >
+
+  <!-- Custom CSS -->
+  <link 
+    rel="stylesheet" 
+    href="./assets/css/style.css" 
+    media="screen,projection"
+  >
+</head>
+<body>
+  <div id="app" class="container">
+    <!--=================-->
+    <!-- Code below here -->
+    <!--=================-->
+    <p class="shadow text1">VIRTUAL GARAGE</p>
+    <p class="shadow text2"> Here you can find any information related to your vehicle(s).</p>
+    <img class="circle" src="./assets/images/goodlogo.png">
+    <br><br>
+    <!--<nav>
+      <div class="nav-wrapper">
+        <class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="badges.html">Sign Out</a></li>
+        </ul>
+      </div>
+    </nav>-->
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+    <!--<nav id="navbar">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo right">Logo</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="sass.html">Sass</a></li>
+          <li><a href="badges.html">Components</a></li>
+          <li><a href="collapsible.html">JavaScript</a></li>
+        </ul>
+      </div>
+    </nav>-->
+    <ul id="slide-out" class="side-nav">
+      <li>
+        <div class="user-view">
+          <div class="background"></div>
+
+          <span id="title" class="shadow text2">TuneUp</span>
+          <a href="#!user"><img class="circle" src="./assets/images/goodlogo.png"></a>
+          <a href="#!name"><span class="black-text name">John Doe</span></a>
+          <a href="#!email"><span class="black-text email">jdandturk@gmail.com</span></a>
+        </div>
+      </li>
+      <li class="no-padding">
+        <ul class="collapsible collapsible-accordian">
+          <li>
+            <h4> Add a new car! </h4>
+            <label class="side-nav-label"> Choose your vehicle make: </label>
+              <div id="js-add-car-make" class="input-field">
+                <select>
+                 <option value="vehicleMake"></option>
+                  <option value="1">Mazda</option>
+                  <option value="2">Honda</option>
+                  <option value="3">Mercedes</option>
+                  <option value="4">BMW</option>                  
+                </select>
+              </div>
+          </li>
+          <li>
+            <label class="side-nav-label"> Choose your vehicle model: </label>
+            <div id="js-add-car-model" class="input-field">
+              <select>
+                <option value="vehicleModel"></option>
+                <option value="1">Mazda</option>
+                <option value="2">Honda</option>
+                <option value="3">Mercedes</option>
+                <option value="4">BMW</option>                  
+              </select>
+            </div>
+          </li>
+          <li>
+            <label class="side-nav-label"> Choose your vehicle year: </label>
+            <div id="js-add-car-year" class="input-field">
+              
+              <select>
+               <option value="vehicleYear"></option>
+                <option value="1">2016</option>
+                <option value="2">2015</option>
+                <option value="3">2014</option>
+                <option value="4">2013</option> 
+                <option value="4">2012</option>   
+                <option value="4">2011</option>   
+                <option value="4">2010</option>   
+                <option value="4">2009</option>                    
+                <option value="4">2008</option>   
+                <option value="4">2007</option>   
+                <option value="4">2006</option>   
+                <option value="4">2005</option>  
+                <option value="4">2004</option>   
+                <option value="4">2003</option>    
+                <option value="4">2002</option>   
+                <option value="4">2001</option>   
+                <option value="4">2000</option> 
+                <option value="4">1999</option>  
+                <option value="4">1998</option>  
+                <option value="4">1997</option>  
+                <option value="4">1996</option>  
+                <option value="4">1995</option>     
+
+              </select>
+            </div>
+          </li>
+          <li>
+            <label class="side-nav-label"> Please enter your vehicle's mileage: </label>
+
+            <div id="js-add-car-mileage">
+              <input type="text" id="mileageInput">
+            </div>
+
+             <button class="btn"> <i class='large material-icons'>add_circle_outline</i>
+                <div id="js-sign-out"><input type="button" value= "Sign Out"></div>
+
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <!-- Dropdown Structure -->
+    <br>
+    <div class="row">
+      <div id="vehicle-details" class="col s12">
+        <p class="shadow text1">VEHICLE DETAILS</p>
+        <div class="row"></div>
+        <div class="row">
+          <div class="col s1"></div>
+          <div id="column1" class="col s4">
+            <h5 style="text-align: center"> RECOMMENDED MAINTENANCE DATA </h5>
+            <br>
+            <form>
+              <label class="maint-label">Oil Change: </label>
+              <br>
+              <br>
+              <span id= "js-display-last-oil-change"> </span>
+              <label class="maint-label">Tire Rotation:</label>
+              <br>
+              <br>
+              <span id="js-display-last-tire-rotation"> </span>
+              
+              <label class="maint-label">Brakes:</label>
+              <br>
+              <br>
+              <span id="js-display-last-brake-inspection"> </span>
+              <label class="maint-label">Inspection:</label>
+              <br>
+              <br>
+              <span id="js-display-last-car-inspection" ></span>
+              <label class="maint-label"> Wiper Blades:</label>
+              <br>
+              <br>
+              <span id="js-display-last-wiper-blades"></span>
+            </form>
+            <div class="row"></div>
+            <div class="row"></div>
+            
+
+          </div>
+          <div class="col s1"></div>
+          
+          <div id="column2" class="col s5">
+
+            <h5 style="text-align: center"> UPDATE DATA </h5>
+            <form>
+              <div class="row">
+                <div class="col s5">
+                  <label class="update-data" > INTERVALS </label>
+                  <br>
+              <label class="update-data">Oil Change (miles)</label>
+              <input type="text" id="oilMiles"/>
+              <label class="update-data">Tire Rotation (miles)</label>
+              <input type="text" id="tireMiles"/>
+              <label class="update-data">Brake Check (miles)</label>
+              <input type="text" id="brakeMiles"/>
+              <label class="update-data">Inspection (months) </label>
+              <input type="text" id="inspectMonths"/>
+              <label class="update-data">Wiper Blades (months)</label>
+              <input type="text" id="wiperMonths" />
+            </div>
+                 <div class="col s5">
+
+                  <label class="update-data" > LAST MAINTENANCE </label>
+                  <br>
+                  <br>
+
+              <input id="" type="date" class="datepicker" id="oil-maintenance"/>
+
+              <br>
+               <br>
+               <input type="date" class="datepicker" id="tire-maintenance"/>
+                
+
+                <br>
+               <br>
+
+              
+               <input type="date" class="datepicker" id="brake-maintenance"/>
+                <br>
+               <br>
+              
+               <input type="date" class="datepicker" id="inspect-maintenance"/>
+                <br>
+               <br>
+              
+               <input type="date" class="datepicker" id="wiper-maintenance"/>
+            </div>
+
+            </form>
+            <div class="col s1"></div>
+          
+              
+          </div>
+                 
+        </div>
+        <br>
+     
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <div class="row"></div>
+    <div class="row"></div>
+
+          <div class="row">
+            <div id="checklist" class="col s12">
+                <p class="shadow text1">TO-DO LIST</p> 
+                 <section class="cd-horizontal-timeline">
+          <div class="timeline">
+            <div class="events-wrapper">
+              <div class="events">
+                <ul>
+                  <li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a></li>
+                  <li><a href="#0" data-date="28/02/2014">28 Feb</a></li>
+                  <li><a href="#0" data-date="20/04/2014">20 Mar</a></li>
+                  <li><a href="#0" data-date="20/05/2014">20 May</a></li>
+                  <li><a href="#0" data-date="09/07/2014">09 Jul</a></li>
+                </ul>
+        
+                <span class="filling-line" aria-hidden="true"></span>
+              </div> <!-- .events -->
+            </div> <!-- .events-wrapper -->
+              
+            <ul class="cd-timeline-navigation">
+              <li><a href="#0" class="prev inactive">Prev</a></li>
+              <li><a href="#0" class="next">Next</a></li>
+            </ul> <!-- .cd-timeline-navigation -->
+          </div> <!-- .timeline -->
+        
+          <div class="events-content">
+            <ul>
+              <li class="selected" data-date="16/01/2014">
+                <h2 id="js-timeline-title-oil-change">OIL CHANGE</h2>
+                <em id="js-timeline-date-oil-change"></em>
+              </li>
+        
+              <li data-date="28/02/2014">
+                <h2 id="js-timeline-title-tire-change">TIRE CHANGE</h2>
+                <em id="js-timeline-date-tire-change"></em>
+              </li>
+        
+              <li data-date="20/04/2014">
+                <h2 id="js-timeline-title-car-inspection">CAR INSPECTION</h2>
+                <em id="js-timeline-date-car-inspection"></em>
+              </li>
+        
+              <li data-date="20/05/2014">
+                <h2 id="js-timeline-title-brake-inspection">BRAKE INSPECTION</h2>
+                <em id="js-timeline-date-brake-inspection"></em>
+              </li>
+        
+              <li data-date="09/07/2014">
+                <h2 id="js-timeline-title-wiper-blades-change">WIPER BLADES</h2>
+                <em id="js-timeline-date-wiper-blades-change"></em>
+              </li>
+            </ul>
+          </div> <!-- .events-content -->
+        </section>
+                
+                
+            </div>
+        
+        </div>
+        <!-- TIMELINE -->
+       
+    <!--=================-->
+    <!-- Code above here -->
+    <!--=================-->
+    <!-- Google Map Display -->
+    <div id="map-canvas"></div>
+  </div><!-- End div 'container' -->
+  <!--==================-->
+  <!-- Javascript below -->
+  <!--==================-->
+  <!-- jQuery CDN -->
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"
+  ></script>
+  <!-- Render JS -->
+  <script src="./assets/javascript/render.js"></script>
+  <!-- Moment JS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>  
+  <!-- NHTSA JS/API -->
+  <script src="./assets/javascript/api-nhtsa.js"></script>
+  <!-- Google Maps JS -->
+  <script src="./assets/javascript/api-google-maps.js"></script>
+  <!-- Google Maps API -->
+  <script 
+    async 
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YC_GpZvlge7TTOgdNhujspZ8yjdbvQU&libraries=places"
+  ></script>
+  <!-- Unix date converter code -->
+  <script src="./assets/javascript/date-converter.js"></script>
+  <!-- Timeline JS -->
+  <script src="./assets/javascript/timeline.js"></script>
+  <!-- Custom JS -->
+  <script src="./assets/javascript/main.js"></script>
+</body>
+</html>
