@@ -34,30 +34,46 @@ $( function() {
 
   // When user chooses a year
   $('body').on('change',"#js-add-car-year",function(event){
-    console.log("#js-add-car-year");
+    // If both make and year selected
+    if ($(this).val() && $('#js-add-car-make').val()) {
+      let year = $(this).val();
+      let make = $('#js-add-car-make').val();
+      // Call API to retrieve models
+      vehicleApi.searchModel(year, make).then( response => {
+        console.log(response);
+      }, err => {
+        console.log(err);
+      });
+    }
   });
 
   // When user chooses a make
   $('body').on('change',"#js-add-car-make",function(event){
-    console.log("#js-add-car-make");
-    console.log(event);
+    // If both make and year selected
+    if ($(this).val() && $('#js-add-car-year').val()) {
+      let make = $(this).val();
+      let year = $('#js-add-car-year').val();
+      // Call API to retrieve models
+      vehicleApi.searchModel(year, make).then( response => {
+        console.log(response);
+      }, err => {
+        console.log(err);
+      });
+    }
   });
 
   // When user chooses a model
   $('body').on('change',"#js-add-car-model",function(event){
-    console.log("#js-add-car-model");
-    console.log(event);
+    console.log($(this).val());
   });
 
   // When user chooses submit (plus sign)
   $('body').on('change',"#js-add-car-mileage",function(event){
-    console.log("#js-add-car-mileage");
-    console.log(event);
+    console.log($(this).val());
   });
 
   // When user submits form
   $('body').on('submit',"form",function(event){
     event.preventDefault();
-    console.log("#js-add-car-submit");
   });
 });
