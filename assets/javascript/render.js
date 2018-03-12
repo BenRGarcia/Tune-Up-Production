@@ -80,9 +80,6 @@ const DOM = {
 
       // After lastMaintenance object rendered
       return object;
-
-      // Broken code, a reminder to get this:
-      // $('js-display-cars-detail').text(year + " " + make + " " + model);
     }
     // If maintenance object was empty
     return object;
