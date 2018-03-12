@@ -31,9 +31,8 @@ const DOM = {
 
     // If car object was empty
     div.text('Click "+" To Add New Car');
-
     // Append div to car display area
-    $('.js-display-car-details').append(div);
+    $('#js-garage').append(div);
 
     return carsObject;
   },
