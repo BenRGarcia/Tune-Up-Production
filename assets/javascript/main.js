@@ -1,14 +1,5 @@
-/*
- *  main.js to receive user input,
- *  translate to method calls to objects:
- *    googleApi  | (google maps API - local service provider locations)
- *    vehicleApi | (NHTSA API - source info for year/make/model)
- *    db         | (Firebase database)  
-**/
-
 // After page loads
 $(function() {
-  console.log(`on ready`);
   // Initialize Materialize CSS drop downs
   $('select').material_select();
   // Get user cars from database, render to DOM
@@ -16,14 +7,12 @@ $(function() {
 });
 
 function initializeGarage() {
-  console.log(`Garage initialized`);
   firebase.auth().onAuthStateChanged(function(user) {
     if (user){
-      console.log(`Made it inside`);
       var uid = userAuth.getUid;
       // Call db object's method to return an object of all of user's car objects
       db.getAllUserCars(uid).then( function(response) {
-        console.log(response); // 'response' will be an object of car objects
+        // console.log(response); // 'response' will be an object of car objects
         DOM.renderCars(response);
       }, function(err) {
       console.log(err); // Errors are logged in the console
@@ -47,7 +36,6 @@ $('body').on('click',".js-display-car-details",function(){
     });
   }
 });
-
 
 //RETRIEVE MAINTENANCE INTERVALS
 $('body').on('click',".js-last-maintenance-interval",function(){
@@ -370,31 +358,7 @@ $('body').on('click','#js-last-brake',function(){
   }
 });
 
-
-
-
- 
-
- 
-
-
-
-
-
-
-
-
-
-// $(body).on("click"," ",function())
-
-// .attr("data-car-key", carKeyvalue)
-
- 
-
-
-
 /*
-
 SUGGESTED NAMING CONVENTIONS FOR HTML ID'S
 
 ========= Update Screen with user's data =========
@@ -475,5 +439,4 @@ $('body').on("click", "#js-update-last-wiper-blades", function() {
 $('body').on("click", ".js-delete-car", function() {
   db.deleteCar(uid, carKey);
 })
-
 */
