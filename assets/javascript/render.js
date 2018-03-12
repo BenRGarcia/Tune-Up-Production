@@ -29,8 +29,8 @@ const DOM = {
         li.addClass("collection-item");
         button.addClass("btn-large js-car-in-garage wide mb-1");
         button.text(year + " " + make + " " + model);
-        button.data("car-key", carKey);
-        a.data("car-key", carKey);
+        button.attr("data-car-key", carKey);
+        a.attr("data-car-key", carKey);
         a.addClass("secondary-content js-delete-car");
         a.attr("href", "#");
         i.addClass("material-icons");
