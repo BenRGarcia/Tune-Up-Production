@@ -62,29 +62,6 @@ const DOM = {
     if (object) {
 
       // Convert Unix time to MMDDYYYY format
-      /* 
-       *  Call dateConverter's unixTimeTommddyyyy() method 
-       *
-       *  In need of conversion: 
-       *    1) carInpectionUnixTime
-       *    2) brakeInspectionUnixTime
-       *    3) wiperBladesUnixTime
-      **/
-
-      // Broken code, a reminder to get this:
-      // $('js-display-cars-detail').text(year + " " + make + " " + model);
-
-      let inspectionDate = $('#js-last-inspection-date').val();
-      let brakeDate = $('#js-last-brake-date').val();
-      let wiperBladeDate = $('#js-last-wiper-date').val();
-
-      let carInpectionUnixTime = dateConverter.unixTimeTommddyyyy(inspectionDate);
-      let brakeInpectionUnixTime = dateConverter.unixTimeTommddyyyy(brakeDate);
-      let wiperBladesUnixTime = dateConverter.unixTimeTommddyyyy(wiperBladeDate);
-
-      let carInspectionTimeline = carInpectionUnixTime.data("date");
-      let brakeInspectionTimeline = brakeInpectionUnixTime.data("date");
-      let wiperBladeTimeline = wiperBladesUnixTime.data("date");
 
       // Declare variables
       let lastOilChange       = object.oilChange;
@@ -99,12 +76,12 @@ const DOM = {
       $('#js-display-last-car-inspection').text(lastCarInspection           || "-");
       $('#js-display-last-brake-inspection').text(lastBrakeInspection       || "-");
       $('#js-display-last-wiper-blades').text(lastWiperBlades               || "-");
-      $('.events').append(carInspectionTimeline).text("CAR INSPECTION"      || "-");
-      $('.events').append(brakeInspectionTimeline).text("BRAKE INSPECTION"  || "-");
-      $('.events').append(wiperBladeTimeline).text("CHECK WIPER BLADE"      || "-");
 
       // After lastMaintenance object rendered
       return object;
+
+      // Broken code, a reminder to get this:
+      // $('js-display-cars-detail').text(year + " " + make + " " + model);
     }
     // If maintenance object was empty
     return object;
