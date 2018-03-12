@@ -33,53 +33,51 @@ $('#js-sign-out').click( function() {
 
 //DISPLAY CAR DETAILS
 $('body').on('click',".js-car-in-garage",function(){
-  if (userAuth.getUid){
-    console.log(`I ran`);
-    var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key");
+  console.log(`I ran`);
+  var uid = userAuth.getUid;
+  var carKey = $(this).data("car-key");
 
-    // Call db object's method to return 'maintenanceInterval' object
-    db.getMaintenanceIntervals(uid, carKey).then( function(response) {
-      console.log(response); // 'response' will be the 'maintenanceInterval' object
-      DOM.renderLastMaintenance(response);
-      // Broken code, a reminder to get this:
-      $('js-display-cars-detail').text(year + " " + make + " " + model);
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
-  }
+  // Call db object's method to return 'maintenanceInterval' object
+  db.getMaintenanceIntervals(uid, carKey).then( function(response) {
+    console.log(response); // 'response' will be the 'maintenanceInterval' object
+    DOM.renderLastMaintenance(response);
+
+
+    // Broken code, a reminder to get this:
+    // $('js-display-cars-detail').text(year + " " + make + " " + model);
+
+
+  }, function(err) {
+    console.log(err); // Errors are logged in the console
+  });
 });
 
 //RETRIEVE MAINTENANCE INTERVALS
 $('body').on('click',".js-last-maintenance-interval",function(){
-  if (userAuth.getUid){
-    var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key");
+  var uid = userAuth.getUid;
+  var carKey = $(this).data("car-key");
 
-    // Call db object's method to return 'maintenanceInterval' object
-    db.getMaintenanceIntervals(uid, carKey).then( function(response) {
-      DOM.renderMaintenanceIntervals(response);
-      console.log(response); // 'response' will be the 'maintenanceInterval' object      
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
-  }
+  // Call db object's method to return 'maintenanceInterval' object
+  db.getMaintenanceIntervals(uid, carKey).then( function(response) {
+    DOM.renderMaintenanceIntervals(response);
+    console.log(response); // 'response' will be the 'maintenanceInterval' object      
+  }, function(err) {
+    console.log(err); // Errors are logged in the console
+  });
 });
 
 //RETRIEVE ALL CARS 
 $('body').on('click',".js-get-all-cars",function(){
-  if (userAuth.getUid){
-    var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key");
+  var uid = userAuth.getUid;
+  var carKey = $(this).data("car-key");
 
-    // Call db object's method to return 'maintenanceInterval' object
-    db.getAllUserCars(uid).then( function(response) {
-      DOM.renderCars(response);
-      console.log(response);// 'response' will be an object of car objects
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
-  }
+  // Call db object's method to return 'maintenanceInterval' object
+  db.getAllUserCars(uid).then( function(response) {
+    DOM.renderCars(response);
+    console.log(response);// 'response' will be an object of car objects
+  }, function(err) {
+    console.log(err); // Errors are logged in the console
+  });
 });
 
 //DELETE USER'S CAR
