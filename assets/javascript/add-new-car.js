@@ -85,8 +85,49 @@ $( function() {
   });
 
   // When user submits form
+  // $('body').on('submit',"form",function(event){
+    // Prevent page reload
+    // event.preventDefault();
+
+    // Get data
+    // let uid = userAuth.getUid;
+    // let year = $('#js-add-car-year').val();
+    // let make = $('#js-add-car-make').val();
+    // let model = $('#js-add-car-model').val();
+    // let mileage = $('#js-add-car-mileage').val();
+
+    // Call db object's method to post new car to firebase database
+    /*db.addNewCar(uid, year, make, model, mileage).then( function(response) {
+      DOM.renderCars(response);
+      console.log(response); // 'response' will be the new car object created
+    }, function(err) {
+      console.log(err); // Errors are logged in the console
+      });*/
+    // });
+  // };
+
+
+
+
+  // When user submits form
   $('body').on('submit',"form",function(event){
+
+    // Prevent page reload
     event.preventDefault();
-    console.log(event);
+
+    // Get data
+    let uid = userAuth.getUid;
+    let year = $('#js-add-car-year').val();
+    let make = $('#js-add-car-make').val();
+    let model = $('#js-add-car-model').val();
+    let mileage = $('#js-add-car-mileage').val();
+
+    // Call db object's method to post new car to firebase database
+    db.addNewCar(uid, year, make, model, mileage).then( function(response) {
+        DOM.renderCars(response);
+        console.log(response); // 'response' will be the new car object created
+      }, function(err) {
+        console.log(err); // Errors are logged in the console
+    });
   });
 });
