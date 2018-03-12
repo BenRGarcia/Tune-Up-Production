@@ -11,6 +11,7 @@ initApp = function() {
       // Set uid and displayment in userAuth object
       userAuth.setUid = user.uid;
       userAuth.setName = user.displayName;
+      $('#js-user-name').text(user.displayName);
     } else {
       // user is signed out
       console.log(`User is signed out`);
