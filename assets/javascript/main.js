@@ -98,7 +98,7 @@ $('body').on('submit','#js-update-mileage-form',function(event){
     $('#js-updated-mileage').val("");
 
     var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key");
+    var carKey = selectedCarKey;
 
     // Call db object's method to update the mileage of a car
     db.updateMileage(uid, carKey, newMileage).then( function(response) {
@@ -124,7 +124,7 @@ $('body').on('submit','#js-update-interval-oil-change-form',function(event){
     $('#js-update-interval-oil-change').val("");
 
     var uid = userAuth.getUid;
-    var carKey = selectedCarKey; // $(this).data("car-key");
+    var carKey = selectedCarKey;
    
     // Call db object's method to update the maintenance interval for oil
     db.updateIntervalOilChange(uid, carKey, newInterval).then( function(response) {
@@ -149,7 +149,7 @@ $('body').on('click','#js-update-interval-tire',function(event){
     $('#js-updated-interval-tire').val("");
 
     var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key"); 
+    var carKey = selectedCarKey;
 
     // Call db object's method to update the maintenance interval for oil
     db.updateIntervalTireRotation(uid, carKey, newInterval).then( function(response) {
@@ -174,7 +174,7 @@ $('body').on('click','#js-update-interval-inspection',function(event){
     $('#js-updated-interval-inspection').val("");
 
     var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key"); 
+    var carKey = selectedCarKey;
 
     // Call db object's method to update the maintenance interval for car inspection
     db.updateIntervalCarInspection(uid, carKey, newInterval).then( function(response) {
@@ -200,7 +200,7 @@ $('body').on('click','#js-update-interval-wipers',function(event){
     $('#js-updated-interval-wipers').val("");
 
     var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key"); 
+    var carKey = selectedCarKey;
 
     // Call db object's method to update the maintenance interval for wiper blades
     db.updateIntervalWiperBlades(uid, carKey, newInterval).then( function(response) {
@@ -226,7 +226,7 @@ $('body').on('click','#js-update-interval-brakes',function(event){
     $('#js-updated-interval-brakes').val("");
 
     var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key"); 
+    var carKey = selectedCarKey;
 
     // Call db object's method to update the maintenance interval for brake inspections
     db.updateIntervalBrakeInspection(uid, carKey, newInterval).then( function(response) {
@@ -251,7 +251,7 @@ $('body').on('click','#js-update-interval-brakes',function(event){
     $('#js-last-oil-mileage').val("");
 
     var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key"); 
+    var carKey = selectedCarKey;
 
     // Call db object's method to update the last maintenance of oil
     db.updateLastOilChange(uid, carKey, mileage).then( function(response) {
@@ -277,7 +277,7 @@ $('body').on('click','#js-last-tire',function(event){
     $('#js-last-tire-mileage').val("");
 
     var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key"); 
+    var carKey = selectedCarKey;
 
     // Call db object's method to update the last maintenance of tire rotation
     db.updateLastTireRotation(uid, carKey, mileage).then( function(response) {
@@ -305,7 +305,7 @@ $('body').on('click','#js-last-inspection',function(event){
     let unixDate = dateConverter.mmddyyyyToUnixTime(date); // = 'date' converted to a unix date with moment.js
 
     var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key"); 
+    var carKey = selectedCarKey;
 
     // Call db object's method to update the last maintenance of car inspection
     db.updateLastCarInspection(uid, carKey, unixDate).then( function(response) {
@@ -333,7 +333,7 @@ $('body').on('click','#js-last-wiper',function(event){
     let unixDate = dateConverter.mmddyyyyToUnixTime(date); // = 'date' converted to a unix date with moment.js
 
     var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key"); 
+    var carKey = selectedCarKey;
 
     // Call db object's method to update the last maintenance of wiper blades
     db.updateLastWiperBlades(uid, carKey, unixDate).then( function(response) {
@@ -362,7 +362,7 @@ $('body').on('click','#js-last-brake',function(event){
     let unixDate = dateConverter.mmddyyyyToUnixTime(date); // = 'date' converted to a unix date with moment.js
 
     var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key"); 
+    var carKey = selectedCarKey;
 
     // Call db object's method to update the last maintenance of brake inspection
     db.updateLastBrakeInspection(uid, carKey, unixDate).then( function(response) {
