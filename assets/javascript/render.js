@@ -112,5 +112,11 @@ const DOM = {
     }
     // If maintenance object was empty
     return object;
+  },
+  renderDropDownModels(modelArray) {
+    // Ignore empty modelArrays
+    if (modelArray) {
+      console.log(modelArray);
+    }
   }
 };
