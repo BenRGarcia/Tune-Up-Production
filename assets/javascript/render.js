@@ -4,8 +4,6 @@ const DOM = {
     // Empty preexisting list
     $('#js-garage').empty();
 
-    
-
     // Ignore empty object
     if (carsObject) {
 
@@ -43,36 +41,15 @@ const DOM = {
         div.append(a);
         li.append(div);
 
-        console.log(li);
-
-        // Add attributes and text
-/*        div.data("car-key", carKey);
-        div.addClass("js-display-car-details");
-        div.text(year, make, model);*/
-
         // Append div to car display area
         $('#js-garage').append(div);
 
       }
       // After all cars rendered
       return carsObject;
-
-/*
-    <li class="collection-item">
-      <div>
-        <button data-car-key="" class="btn-large js-car-in-garage">2015 Honda Civic</button>
-        <a data-car-key="" href="#" class="secondary-content js-delete-car">
-          <i class="material-icons">delete</i>
-        </a>
-      </div>
-    </li>
-*/
     }
-
-    // Make new div
+    // If car object was empty, make new div
     let div = $('<div>');
-
-    // If car object was empty
     div.text('Click "+" To Add New Car');
     // Append div to car display area
     $('#js-garage').append(div);
