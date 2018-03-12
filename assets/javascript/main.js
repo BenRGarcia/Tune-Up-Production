@@ -33,7 +33,6 @@ $('#js-sign-out').click( function() {
 
 //DISPLAY CAR DETAILS
 $('body').on('click',".js-car-in-garage",function(){
-  console.log(`I ran`);
   var uid = userAuth.getUid;
   var carKey = $(this).data("car-key");
 
