@@ -88,9 +88,10 @@ $('body').on('click','.js-delete-car',function(){
 });
 
 //UPDATE CAR MILEAGE
-$('body').on('click','#js-update-mileage',function(){
+$('body').on('submit','#js-update-mileage-form',function(event){
+  event.preventDefault();
   // Get user input
-  let newMileage = $('#js-updated-mileage').val();
+  let newMileage = $('#js-update-mileage').val();
   // Ignore empty inputs
   if (newMileage) {
     // Reset form input to empty string
@@ -124,12 +125,11 @@ $('body').on('submit','#js-update-interval-oil-change-form',function(event){
 
     var uid = userAuth.getUid;
     var carKey = selectedCarKey; // $(this).data("car-key");
-    console.log(carKey);
    
     // Call db object's method to update the maintenance interval for oil
     db.updateIntervalOilChange(uid, carKey, newInterval).then( function(response) {
       DOM.renderMaintenanceIntervals(response);
-      console.log(response); // 'response' is an object of updated interval for oil
+      // console.log(response); // 'response' is an object of updated interval for oil
     }, function(err) {
       console.log(err); // Errors are logged in the console
     });
@@ -137,7 +137,8 @@ $('body').on('submit','#js-update-interval-oil-change-form',function(event){
 });
 
 //UPDATE INTERVAL FOR TIRE ROTATION
-$('body').on('click','#js-update-interval-tire',function(){
+$('body').on('click','#js-update-interval-tire',function(event){
+  event.preventDefault();
   // Get user input
   let newInterval = $('#js-updated-interval-tire').val();
 
@@ -161,7 +162,8 @@ $('body').on('click','#js-update-interval-tire',function(){
 });
 
 //UPDATE INTERVAL FOR CAR INSPECTION
-$('body').on('click','#js-update-interval-inspection',function(){
+$('body').on('click','#js-update-interval-inspection',function(event){
+  event.preventDefault();
   // Get user input
   let newInterval = $('#js-updated-interval-inspection').val();
 
@@ -185,7 +187,8 @@ $('body').on('click','#js-update-interval-inspection',function(){
 });
 
 //UPDATE INTERVAL FOR WIPER BLADES
-$('body').on('click','#js-update-interval-wipers',function(){
+$('body').on('click','#js-update-interval-wipers',function(event){
+  event.preventDefault();
 
   // Get user input
   let newInterval = $('#js-updated-interval-wipers').val();
@@ -210,7 +213,8 @@ $('body').on('click','#js-update-interval-wipers',function(){
 });
 
 //UPDATE INTERVAL FOR BRAKES
-$('body').on('click','#js-update-interval-brakes',function(){
+$('body').on('click','#js-update-interval-brakes',function(event){
+  event.preventDefault();
 
   // Get user input
   let newInterval = $('#js-updated-interval-brakes').val();
@@ -235,7 +239,8 @@ $('body').on('click','#js-update-interval-brakes',function(){
 });
 
 //UPDATE LAST MAINTENANCE FOR OIL
-$('body').on('click','#js-update-interval-brakes',function(){
+$('body').on('click','#js-update-interval-brakes',function(event){
+  event.preventDefault();
   // Get user input
   let mileage = $('#js-last-oil-mileage').val();
 
@@ -259,7 +264,8 @@ $('body').on('click','#js-update-interval-brakes',function(){
 });
 
 //UPDATE LAST MAINTENANCE FOR TIRES
-$('body').on('click','#js-last-tire',function(){
+$('body').on('click','#js-last-tire',function(event){
+  event.preventDefault();
 
   // Get user input
   let mileage = $('#js-last-tire-mileage').val();
@@ -284,7 +290,8 @@ $('body').on('click','#js-last-tire',function(){
 });
 
 //UPDATE LAST MAINTENANCE FOR CAR INSPECTION
-$('body').on('click','#js-last-inspection',function(){
+$('body').on('click','#js-last-inspection',function(event){
+  event.preventDefault();
   // Get user input
   let date = $('#js-last-inspection-date').val();
 
@@ -311,7 +318,8 @@ $('body').on('click','#js-last-inspection',function(){
 });
 
 //UPDATE LAST MAINTENANCE FOR WIPER BLADES
-$('body').on('click','#js-last-wiper',function(){
+$('body').on('click','#js-last-wiper',function(event){
+  event.preventDefault();
   // Get user input
   let date = $('#js-last-wiper-date').val();
 
@@ -338,7 +346,8 @@ $('body').on('click','#js-last-wiper',function(){
 });
 
 //UPDATE LAST MAINTENANCE FOR BRAKES
-$('body').on('click','#js-last-brake',function(){
+$('body').on('click','#js-last-brake',function(event){
+  event.preventDefault();
 
   // Get user input
   let date = $('#js-last-brake-date').val();
