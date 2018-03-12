@@ -20,7 +20,7 @@ function initializeGarage() {
       });
     } else {
       // User not signed in, redirect to home page
-      window.location.replace("https://benrgarcia.github.io/Tune-Up-Production/")
+      // window.location.replace("https://benrgarcia.github.io/Tune-Up-Production/")
     }
   });
 }
@@ -38,7 +38,7 @@ $('body').on('click',".js-car-in-garage",function(){
   var carKey = $(this).data("car-key");
 
   // Call db object's method to return 'maintenanceInterval' object
-  db.getMaintenanceIntervals(uid, carKey).then( function(response) {
+  /*db.getMaintenanceIntervals(uid, carKey).then( function(response) {
     console.log(response); // 'response' will be the 'maintenanceInterval' object
     DOM.renderLastMaintenance(response);
 
@@ -49,7 +49,7 @@ $('body').on('click',".js-car-in-garage",function(){
 
   }, function(err) {
     console.log(err); // Errors are logged in the console
-  });
+  });*/
 });
 
 //RETRIEVE MAINTENANCE INTERVALS
