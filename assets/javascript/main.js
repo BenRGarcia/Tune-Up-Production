@@ -8,6 +8,7 @@
 
 // After page loads
 $(function() {
+  console.log(`on ready`);
   // Initialize Materialize CSS drop downs
   $('select').material_select();
   // Get user cars from database, render to DOM
@@ -15,16 +16,20 @@ $(function() {
 });
 
 function initializeGarage() {
-  if (userAuth.getUid){
-    var uid = userAuth.getUid;
-    // Call db object's method to return an object of all of user's car objects
-    db.getAllUserCars(uid).then( function(response) {
-      // console.log(response); // 'response' will be an object of car objects
-      DOM.renderCars(response);
-    }, function(err) {
-    console.log(err); // Errors are logged in the console
-    });
-  }
+  console.log(`Garage initialized`);
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user){
+      console.log(`Made it inside`);
+      var uid = userAuth.getUid;
+      // Call db object's method to return an object of all of user's car objects
+      db.getAllUserCars(uid).then( function(response) {
+        console.log(response); // 'response' will be an object of car objects
+        DOM.renderCars(response);
+      }, function(err) {
+      console.log(err); // Errors are logged in the console
+      });
+    }
+  });
 }
 
 //DISPLAY CAR DETAILS
