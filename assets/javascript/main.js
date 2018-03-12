@@ -90,23 +90,27 @@ $('body').on('click','.js-delete-car',function(){
 //UPDATE CAR MILEAGE
 $('body').on('submit','#js-update-mileage-form',function(event){
   event.preventDefault();
-  // Get user input
-  let newMileage = $('#js-update-mileage').val();
-  // Ignore empty inputs
-  if (newMileage) {
-    // Reset form input to empty string
-    $('#js-updated-mileage').val("");
 
-    var uid = userAuth.getUid;
-    var carKey = selectedCarKey;
+  // Ignore inputs if car not yet selected
+  if (selectedCarKey) {
+    // Get user input
+    let newMileage = $('#js-update-mileage').val();
+    // Ignore empty inputs
+    if (newMileage) {
+      // Reset form input to empty string
+      $('#js-updated-mileage').val("");
 
-    // Call db object's method to update the mileage of a car
-    db.updateMileage(uid, carKey, newMileage).then( function(response) {
-      DOM.renderLastMaintenance(response);
-      console.log(response); // 'response' is an object of updated mileage
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
+      var uid = userAuth.getUid;
+      var carKey = selectedCarKey;
+
+      // Call db object's method to update the mileage of a car
+      db.updateMileage(uid, carKey, newMileage).then( function(response) {
+        DOM.renderLastMaintenance(response);
+        console.log(response); // 'response' is an object of updated mileage
+      }, function(err) {
+        console.log(err); // Errors are logged in the console
+      });
+    }
   }
 });
 
@@ -114,75 +118,86 @@ $('body').on('submit','#js-update-mileage-form',function(event){
 $('body').on('submit','#js-update-interval-oil-change-form',function(event){
   event.preventDefault();
 
-  // Get user input
-  let newInterval = $('#js-update-interval-oil-change').val();
+  // Ignore inputs if car not yet selected
+  if (selectedCarKey) {
+    // Get user input
+    let newInterval = $('#js-update-interval-oil-change').val();
 
-  // Ignore empty inputs
-  if (newInterval) {
+    // Ignore empty inputs
+    if (newInterval) {
 
-    // Reset form input to empty string
-    $('#js-update-interval-oil-change').val("");
+      // Reset form input to empty string
+      $('#js-update-interval-oil-change').val("");
 
-    var uid = userAuth.getUid;
-    var carKey = selectedCarKey;
-   
-    // Call db object's method to update the maintenance interval for oil
-    db.updateIntervalOilChange(uid, carKey, newInterval).then( function(response) {
-      DOM.renderMaintenanceIntervals(response);
-      // console.log(response); // 'response' is an object of updated interval for oil
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
+      var uid = userAuth.getUid;
+      var carKey = selectedCarKey;
+     
+      // Call db object's method to update the maintenance interval for oil
+      db.updateIntervalOilChange(uid, carKey, newInterval).then( function(response) {
+        DOM.renderMaintenanceIntervals(response);
+        // console.log(response); // 'response' is an object of updated interval for oil
+      }, function(err) {
+        console.log(err); // Errors are logged in the console
+      });
+    }
   }
 });
 
 //UPDATE INTERVAL FOR TIRE ROTATION
 $('body').on('click','#js-update-interval-tire',function(event){
   event.preventDefault();
-  // Get user input
-  let newInterval = $('#js-updated-interval-tire').val();
 
-  // Ignore empty inputs
-  if (newInterval) {
+  // Ignore inputs if car not yet selected
+  if (selectedCarKey) {
+    // Get user input
+    let newInterval = $('#js-updated-interval-tire').val();
 
-    // Reset form input to empty string
-    $('#js-updated-interval-tire').val("");
+    // Ignore empty inputs
+    if (newInterval) {
 
-    var uid = userAuth.getUid;
-    var carKey = selectedCarKey;
+      // Reset form input to empty string
+      $('#js-updated-interval-tire').val("");
 
-    // Call db object's method to update the maintenance interval for oil
-    db.updateIntervalTireRotation(uid, carKey, newInterval).then( function(response) {
-      DOM.renderMaintenanceIntervals(response);
-      console.log(response); // 'response' is an object of updated interval for oil
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
+      var uid = userAuth.getUid;
+      var carKey = selectedCarKey;
+
+      // Call db object's method to update the maintenance interval for oil
+      db.updateIntervalTireRotation(uid, carKey, newInterval).then( function(response) {
+        DOM.renderMaintenanceIntervals(response);
+        console.log(response); // 'response' is an object of updated interval for oil
+      }, function(err) {
+        console.log(err); // Errors are logged in the console
+      });
+    }
   }
 });
 
 //UPDATE INTERVAL FOR CAR INSPECTION
 $('body').on('click','#js-update-interval-inspection',function(event){
   event.preventDefault();
-  // Get user input
-  let newInterval = $('#js-updated-interval-inspection').val();
 
-  // Ignore empty inputs
-  if (newInterval) {
+  // Ignore inputs if car not yet selected
+  if (selectedCarKey) {
+    // Get user input
+    let newInterval = $('#js-updated-interval-inspection').val();
 
-    // Reset form input to empty string
-    $('#js-updated-interval-inspection').val("");
+    // Ignore empty inputs
+    if (newInterval) {
 
-    var uid = userAuth.getUid;
-    var carKey = selectedCarKey;
+      // Reset form input to empty string
+      $('#js-updated-interval-inspection').val("");
 
-    // Call db object's method to update the maintenance interval for car inspection
-    db.updateIntervalCarInspection(uid, carKey, newInterval).then( function(response) {
-      DOM.renderMaintenanceIntervals(response);
-      console.log(response); // 'response' is an object of updated interval for car inspection months
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
+      var uid = userAuth.getUid;
+      var carKey = selectedCarKey;
+
+      // Call db object's method to update the maintenance interval for car inspection
+      db.updateIntervalCarInspection(uid, carKey, newInterval).then( function(response) {
+        DOM.renderMaintenanceIntervals(response);
+        console.log(response); // 'response' is an object of updated interval for car inspection months
+      }, function(err) {
+        console.log(err); // Errors are logged in the console
+      });
+    }
   }
 });
 
@@ -190,25 +205,28 @@ $('body').on('click','#js-update-interval-inspection',function(event){
 $('body').on('click','#js-update-interval-wipers',function(event){
   event.preventDefault();
 
-  // Get user input
-  let newInterval = $('#js-updated-interval-wipers').val();
+  // Ignore inputs if car not yet selected
+  if (selectedCarKey) {
+    // Get user input
+    let newInterval = $('#js-updated-interval-wipers').val();
 
-  // Ignore empty inputs
-  if (newInterval) {
+    // Ignore empty inputs
+    if (newInterval) {
 
-    // Reset form input to empty string
-    $('#js-updated-interval-wipers').val("");
+      // Reset form input to empty string
+      $('#js-updated-interval-wipers').val("");
 
-    var uid = userAuth.getUid;
-    var carKey = selectedCarKey;
+      var uid = userAuth.getUid;
+      var carKey = selectedCarKey;
 
-    // Call db object's method to update the maintenance interval for wiper blades
-    db.updateIntervalWiperBlades(uid, carKey, newInterval).then( function(response) {
-      DOM.renderMaintenanceIntervals(response);
-      console.log(response); // 'response' is an object of updated interval for wiper blades
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
+      // Call db object's method to update the maintenance interval for wiper blades
+      db.updateIntervalWiperBlades(uid, carKey, newInterval).then( function(response) {
+        DOM.renderMaintenanceIntervals(response);
+        console.log(response); // 'response' is an object of updated interval for wiper blades
+      }, function(err) {
+        console.log(err); // Errors are logged in the console
+      });
+    }
   }
 });
 
@@ -216,50 +234,57 @@ $('body').on('click','#js-update-interval-wipers',function(event){
 $('body').on('click','#js-update-interval-brakes',function(event){
   event.preventDefault();
 
-  // Get user input
-  let newInterval = $('#js-updated-interval-brakes').val();
+  // Ignore inputs if car not yet selected
+  if (selectedCarKey) {
+    // Get user input
+    let newInterval = $('#js-updated-interval-brakes').val();
 
-  // Ignore empty inputs
-  if (newInterval) {
+    // Ignore empty inputs
+    if (newInterval) {
 
-    // Reset form input to empty string
-    $('#js-updated-interval-brakes').val("");
+      // Reset form input to empty string
+      $('#js-updated-interval-brakes').val("");
 
-    var uid = userAuth.getUid;
-    var carKey = selectedCarKey;
+      var uid = userAuth.getUid;
+      var carKey = selectedCarKey;
 
-    // Call db object's method to update the maintenance interval for brake inspections
-    db.updateIntervalBrakeInspection(uid, carKey, newInterval).then( function(response) {
-      DOM.renderMaintenanceIntervals(response);
-      console.log(response); // 'response' is an object of updated interval for brake inspection
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
+      // Call db object's method to update the maintenance interval for brake inspections
+      db.updateIntervalBrakeInspection(uid, carKey, newInterval).then( function(response) {
+        DOM.renderMaintenanceIntervals(response);
+        console.log(response); // 'response' is an object of updated interval for brake inspection
+      }, function(err) {
+        console.log(err); // Errors are logged in the console
+      });
+    }
   }
 });
 
 //UPDATE LAST MAINTENANCE FOR OIL
 $('body').on('click','#js-update-interval-brakes',function(event){
   event.preventDefault();
-  // Get user input
-  let mileage = $('#js-last-oil-mileage').val();
 
-  // Ignore empty inputs
-  if (mileage) {
+  // Ignore inputs if car not yet selected
+  if (selectedCarKey) {
+    // Get user input
+    let mileage = $('#js-last-oil-mileage').val();
 
-    // Reset form input to empty string      
-    $('#js-last-oil-mileage').val("");
+    // Ignore empty inputs
+    if (mileage) {
 
-    var uid = userAuth.getUid;
-    var carKey = selectedCarKey;
+      // Reset form input to empty string      
+      $('#js-last-oil-mileage').val("");
 
-    // Call db object's method to update the last maintenance of oil
-    db.updateLastOilChange(uid, carKey, mileage).then( function(response) {
-      DOM.renderLastMaintenance(response);
-      console.log(response); // 'response' is an object of last maintenance of oil
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
+      var uid = userAuth.getUid;
+      var carKey = selectedCarKey;
+
+      // Call db object's method to update the last maintenance of oil
+      db.updateLastOilChange(uid, carKey, mileage).then( function(response) {
+        DOM.renderLastMaintenance(response);
+        console.log(response); // 'response' is an object of last maintenance of oil
+      }, function(err) {
+        console.log(err); // Errors are logged in the console
+      });
+    }
   }
 });
 
@@ -267,81 +292,92 @@ $('body').on('click','#js-update-interval-brakes',function(event){
 $('body').on('click','#js-last-tire',function(event){
   event.preventDefault();
 
-  // Get user input
-  let mileage = $('#js-last-tire-mileage').val();
+  // Ignore inputs if car not yet selected
+  if (selectedCarKey) {
+    // Get user input
+    let mileage = $('#js-last-tire-mileage').val();
 
-  // Ignore empty input
-  if (mileage) {
+    // Ignore empty input
+    if (mileage) {
 
-    // Reset form input to empty string   
-    $('#js-last-tire-mileage').val("");
+      // Reset form input to empty string   
+      $('#js-last-tire-mileage').val("");
 
-    var uid = userAuth.getUid;
-    var carKey = selectedCarKey;
+      var uid = userAuth.getUid;
+      var carKey = selectedCarKey;
 
-    // Call db object's method to update the last maintenance of tire rotation
-    db.updateLastTireRotation(uid, carKey, mileage).then( function(response) {
-      DOM.renderLastMaintenance(response);
-      console.log(response); // 'response' is an object of last maintenance of tire rotation
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
+      // Call db object's method to update the last maintenance of tire rotation
+      db.updateLastTireRotation(uid, carKey, mileage).then( function(response) {
+        DOM.renderLastMaintenance(response);
+        console.log(response); // 'response' is an object of last maintenance of tire rotation
+      }, function(err) {
+        console.log(err); // Errors are logged in the console
+      });
+    }
   }
 });
 
 //UPDATE LAST MAINTENANCE FOR CAR INSPECTION
 $('body').on('click','#js-last-inspection',function(event){
   event.preventDefault();
-  // Get user input
-  let date = $('#js-last-inspection-date').val();
 
-  // Ignore empty inputs
-  if (date) {
+  // Ignore inputs if car not yet selected
+  if (selectedCarKey) {
+    // Get user input
+    let date = $('#js-last-inspection-date').val();
 
-    // Reset form input to empty string
-    $('#js-last-inspection-date').val("");
+    // Ignore empty inputs
+    if (date) {
 
-    // Use moment.js to convert to Unix Time
-    let unixDate = dateConverter.mmddyyyyToUnixTime(date); // = 'date' converted to a unix date with moment.js
+      // Reset form input to empty string
+      $('#js-last-inspection-date').val("");
 
-    var uid = userAuth.getUid;
-    var carKey = selectedCarKey;
+      // Use moment.js to convert to Unix Time
+      let unixDate = dateConverter.mmddyyyyToUnixTime(date); // = 'date' converted to a unix date with moment.js
 
-    // Call db object's method to update the last maintenance of car inspection
-    db.updateLastCarInspection(uid, carKey, unixDate).then( function(response) {
-      DOM.renderLastMaintenance(response);
-      console.log(response); // 'response' is an object of last maintenance of car inspection
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
+      var uid = userAuth.getUid;
+      var carKey = selectedCarKey;
+
+      // Call db object's method to update the last maintenance of car inspection
+      db.updateLastCarInspection(uid, carKey, unixDate).then( function(response) {
+        DOM.renderLastMaintenance(response);
+        console.log(response); // 'response' is an object of last maintenance of car inspection
+      }, function(err) {
+        console.log(err); // Errors are logged in the console
+      });
+    }
   }
 });
 
 //UPDATE LAST MAINTENANCE FOR WIPER BLADES
 $('body').on('click','#js-last-wiper',function(event){
   event.preventDefault();
-  // Get user input
-  let date = $('#js-last-wiper-date').val();
 
-  // Ignore empty input
-  if (date) {
+  // Ignore inputs if car not yet selected
+  if (selectedCarKey) {
+    // Get user input
+    let date = $('#js-last-wiper-date').val();
 
-    // Reset form input to empty string
-    $('#js-last-wiper-date').val("");
+    // Ignore empty input
+    if (date) {
 
-    // Use moment.js to convert to Unix Time
-    let unixDate = dateConverter.mmddyyyyToUnixTime(date); // = 'date' converted to a unix date with moment.js
+      // Reset form input to empty string
+      $('#js-last-wiper-date').val("");
 
-    var uid = userAuth.getUid;
-    var carKey = selectedCarKey;
+      // Use moment.js to convert to Unix Time
+      let unixDate = dateConverter.mmddyyyyToUnixTime(date); // = 'date' converted to a unix date with moment.js
 
-    // Call db object's method to update the last maintenance of wiper blades
-    db.updateLastWiperBlades(uid, carKey, unixDate).then( function(response) {
-      DOM.renderLastMaintenance(response);
-      console.log(response); // 'response' is an object of last maintenance of wiper blades
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
+      var uid = userAuth.getUid;
+      var carKey = selectedCarKey;
+
+      // Call db object's method to update the last maintenance of wiper blades
+      db.updateLastWiperBlades(uid, carKey, unixDate).then( function(response) {
+        DOM.renderLastMaintenance(response);
+        console.log(response); // 'response' is an object of last maintenance of wiper blades
+      }, function(err) {
+        console.log(err); // Errors are logged in the console
+      });
+    }
   }
 });
 
@@ -349,28 +385,31 @@ $('body').on('click','#js-last-wiper',function(event){
 $('body').on('click','#js-last-brake',function(event){
   event.preventDefault();
 
-  // Get user input
-  let date = $('#js-last-brake-date').val();
+  // Ignore inputs if car not yet selected
+  if (selectedCarKey) {
+    // Get user input
+    let date = $('#js-last-brake-date').val();
 
-  // Ignore empty input
-  if (date) {
+    // Ignore empty input
+    if (date) {
 
-    // Reset form input to empty string
-    $('#js-last-brake-date').val("");
+      // Reset form input to empty string
+      $('#js-last-brake-date').val("");
 
-    // Use moment.js to convert to Unix Time
-    let unixDate = dateConverter.mmddyyyyToUnixTime(date); // = 'date' converted to a unix date with moment.js
+      // Use moment.js to convert to Unix Time
+      let unixDate = dateConverter.mmddyyyyToUnixTime(date); // = 'date' converted to a unix date with moment.js
 
-    var uid = userAuth.getUid;
-    var carKey = selectedCarKey;
+      var uid = userAuth.getUid;
+      var carKey = selectedCarKey;
 
-    // Call db object's method to update the last maintenance of brake inspection
-    db.updateLastBrakeInspection(uid, carKey, unixDate).then( function(response) {
-      DOM.renderLastMaintenance(response);
-      console.log(response); // 'response' is an object of last maintenance of brake inspection
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-    });
+      // Call db object's method to update the last maintenance of brake inspection
+      db.updateLastBrakeInspection(uid, carKey, unixDate).then( function(response) {
+        DOM.renderLastMaintenance(response);
+        console.log(response); // 'response' is an object of last maintenance of brake inspection
+      }, function(err) {
+        console.log(err); // Errors are logged in the console
+      });
+    }
   }
 });
 
