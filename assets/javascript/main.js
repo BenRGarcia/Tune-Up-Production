@@ -6,28 +6,26 @@
  *    db         | (Firebase database)  
 **/
 
-
-//NAV BAR
-$(document).ready(function() {
-  // Initialize collapse button
-  $(".button-collapse").sideNav();
-  // Initialize collapsible dropdown
-  $('.collapsible').collapsible();
-  $('.button-collapse').sideNav({
-    menuWidth: 300, // Default is 300
-    edge: 'left', // Choose the horizontal origin
-    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    draggable: true, // Choose whether you can drag to open on touch screens,
-    // onOpen: function(el) { /* Do Stuff* / }, // A function to be called when sideNav is opened
-    // onClose: function(el) { /* Do Stuff* / }, // A function to be called when sideNav is closed
-  });
+// After page loads
+$(function() {
+  // Initialize Materialize CSS drop downs
   $('select').material_select();
-});
-
-// Start listener on page load
-window.addEventListener('load', function() {
+  // Get user cars from database, render to DOM
   initializeGarage();
 });
+
+function initializeGarage() {
+  if (userAuth.getUid){
+    var uid = userAuth.getUid;
+    // Call db object's method to return an object of all of user's car objects
+    db.getAllUserCars(uid).then( function(response) {
+      // console.log(response); // 'response' will be an object of car objects
+      DOM.renderCars(response);
+    }, function(err) {
+    console.log(err); // Errors are logged in the console
+    });
+  }
+}
 
 //DISPLAY CAR DETAILS
 $('body').on('click',".js-display-car-details",function(){
@@ -45,33 +43,6 @@ $('body').on('click',".js-display-car-details",function(){
   }
 });
 
-//CREATE NEW CAR
-$('body').on('click',"#js-new-car-add",function(){
-  if (userAuth.getUid){
-    var uid = userAuth.getUid;
-    // Get user input
-    let year = $('#js-new-car-year').val();
-    let make = $('#js-new-car-make').val();
-    let model = $('#js-new-car-model').val();
-    let mileage = $('#js-new-car-mileage').val();
-
-    // Ignore incomplete form submissions
-    if (year && make && model && mileage) {
-    // Reset form inputs to empty strings
-    $('#js-new-car-year').val("");
-    $('#js-new-car-make').val("");
-    $('#js-new-car-model').val("");
-    $('#js-new-car-mileage').val("");
-    // Call db object's method to post new car to firebase database
-    db.addNewCar(uid, year, make, model, mileage).then( function(response) {
-      DOM.renderCars(response);
-      console.log(response); // 'response' will be the new car object created
-    }, function(err) {
-      console.log(err); // Errors are logged in the console
-      });
-    }
-  }
-});
 
 //RETRIEVE MAINTENANCE INTERVALS
 $('body').on('click',".js-last-maintenance-interval",function(){
@@ -397,19 +368,7 @@ $('body').on('click','#js-last-brake',function(){
 
 
 
- function initializeGarage(){
-    console.log("Garage has been initialized");
-    if (userAuth.getUid){
-      var uid = userAuth.getUid;
-       // Call db object's method to return an object of all of user's car objects
-      db.getAllUserCars(uid).then( function(response) {
-        console.log(response); // 'response' will be an object of car objects
-        DOM.renderCars(response);
-      }, function(err) {
-        console.log(err); // Errors are logged in the console
-      });
-    }
- }
+ 
 
  
 
