@@ -22,10 +22,11 @@ function initializeGarage() {
 }
 
 //DISPLAY CAR DETAILS
-$('body').on('click',".js-display-car-details",function(){
+$('body').on('click',".js-car-in-garage",function(){
   if (userAuth.getUid){
+    console.log(`I ran`);
     var uid = userAuth.getUid;
-    var carKey = $(this).data("data-car-key");
+    var carKey = $(this).data("car-key");
 
     // Call db object's method to return 'maintenanceInterval' object
     db.getMaintenanceIntervals(uid, carKey).then( function(response) {
