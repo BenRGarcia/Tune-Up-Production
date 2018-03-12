@@ -32,12 +32,9 @@
 // jQuery on ready
 $( function() {
 
-  // Render car makes from db object to browser
-
   // When user chooses a year
   $('body').on('change',"#js-add-car-year",function(event){
     console.log("#js-add-car-year");
-    console.log(event);
   });
 
   // When user chooses a make
