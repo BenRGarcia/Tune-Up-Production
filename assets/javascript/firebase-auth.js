@@ -5,7 +5,7 @@
 
 // FirebaseUI config.
 var uiConfig = {
-  signInSuccessUrl: 'localhost:8888/virtual-garage.html',
+  signInSuccessUrl: 'https://benrgarcia.github.io/Tune-Up-Production/virtual-garage.html',
   signInOptions: [
     firebase.auth.GithubAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID
