@@ -32,6 +32,8 @@ $('body').on('click',".js-car-in-garage",function(){
     db.getMaintenanceIntervals(uid, carKey).then( function(response) {
       console.log(response); // 'response' will be the 'maintenanceInterval' object
       DOM.renderLastMaintenance(response);
+      // Broken code, a reminder to get this:
+      $('js-display-cars-detail').text(year + " " + make + " " + model);
     }, function(err) {
       console.log(err); // Errors are logged in the console
     });
