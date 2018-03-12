@@ -98,7 +98,7 @@ $('body').on('submit','#js-update-mileage-form',function(event){
     // Ignore empty inputs
     if (newMileage) {
       // Reset form input to empty string
-      $('#js-updated-mileage').val("");
+      $('#js-update-mileage').val("");
 
       var uid = userAuth.getUid;
       var carKey = selectedCarKey;
@@ -106,7 +106,7 @@ $('body').on('submit','#js-update-mileage-form',function(event){
       // Call db object's method to update the mileage of a car
       db.updateMileage(uid, carKey, newMileage).then( function(response) {
         DOM.renderLastMaintenance(response);
-        console.log(response); // 'response' is an object of updated mileage
+        // console.log(response); // 'response' is an object of updated mileage
       }, function(err) {
         console.log(err); // Errors are logged in the console
       });
