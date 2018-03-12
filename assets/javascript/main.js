@@ -6,6 +6,9 @@ $(function() {
   initializeGarage();
 });
 
+// Global Variable
+var selectedCarKey;
+
 function initializeGarage() {
   firebase.auth().onAuthStateChanged(function(user) {
     // User is signed in
@@ -35,6 +38,9 @@ $('#js-sign-out').click( function() {
 $('body').on('click',".js-car-in-garage",function(){
   var uid = userAuth.getUid;
   var carKey = $(this).data("car-key");
+
+  // Set value of global variable
+  selectedCarKey = carKey;
 
   // Call db object's method to return 'maintenanceInterval' object
   db.getLastMaintenance(uid, carKey).then( function(response) {
@@ -81,7 +87,7 @@ $('body').on('click','.js-delete-car',function(){
   });
 });
 
-//UPDATE CARE MILEAGE
+//UPDATE CAR MILEAGE
 $('body').on('click','#js-update-mileage',function(){
   // Get user input
   let newMileage = $('#js-updated-mileage').val();
@@ -104,18 +110,21 @@ $('body').on('click','#js-update-mileage',function(){
 });
 
 //UPDATE INTERVAL FOR OIL MAINTENANCE
-$('body').on('click','#js-update-interval-oil',function(){
+$('body').on('submit','#js-update-interval-oil-change-form',function(event){
+  event.preventDefault();
+
   // Get user input
-  let newInterval = $('#js-updated-interval-oil').val();
+  let newInterval = $('#js-update-interval-oil-change').val();
 
   // Ignore empty inputs
   if (newInterval) {
 
     // Reset form input to empty string
-    $('#js-updated-interval-oil').val("");
+    $('#js-update-interval-oil-change').val("");
 
     var uid = userAuth.getUid;
-    var carKey = $(this).data("car-key");
+    var carKey = selectedCarKey; // $(this).data("car-key");
+    console.log(carKey);
    
     // Call db object's method to update the maintenance interval for oil
     db.updateIntervalOilChange(uid, carKey, newInterval).then( function(response) {
