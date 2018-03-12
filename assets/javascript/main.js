@@ -21,6 +21,11 @@ function initializeGarage() {
   });
 }
 
+// When user signs out
+$('#js-sign-out').click( function() {
+  userAuth.signOut();
+});
+
 //DISPLAY CAR DETAILS
 $('body').on('click',".js-car-in-garage",function(){
   if (userAuth.getUid){
@@ -80,7 +85,7 @@ $('body').on('click','.js-delete-car',function(){
   // Call db object's method to delete a car
   db.deleteCar(uid, carKey).then( function(response) {
     initializeGarage();
-    console.log(response); // 'response' is the deleted car's carKey
+    // console.log(response); // 'response' is the deleted car's carKey
   }, function(err) {
     console.log(err); // Errors are logged in the console
   });
