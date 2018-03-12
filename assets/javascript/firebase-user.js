@@ -7,14 +7,13 @@ initApp = function() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in
-      // console.log(`Logged in user, displayName: '${user.displayName}', uid: '${user.uid}'`);
       // Set uid and displayment in userAuth object
       userAuth.setUid = user.uid;
       userAuth.setName = user.displayName;
-      $('#js-user-name').text(user.displayName);
+      return $('#js-user-name').text(user.displayName);
     } else {
       // user is signed out
-      console.log(`User is signed out`);
+      return false;
     }
   }, function(error) {
     console.log(error);
@@ -22,8 +21,8 @@ initApp = function() {
 };
 
 // Start listener on page load
-window.addEventListener('load', function() {
-  initApp()
+$( function() {
+  initApp();
 });
 
 // Object to return 'uid' and 'displayName' for use with firebase db
@@ -44,9 +43,9 @@ const userAuth = {
   },
   signOut() {
     firebase.auth().signOut().then( function() {
-        console.log("User signed out");
+      this._uid = null;
+      this._name = null;
       }, function(error) {
-        console.log("Signout error:");
         console.log(error);
       }
     );
