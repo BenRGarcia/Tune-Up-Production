@@ -57,6 +57,14 @@ $('body').on('click',".js-car-in-garage",function(){
   }, function(err) {
     console.log(err); // Errors are logged in the console
   });
+
+  // Update mileage display
+  db.getAllUserCars(uid, carKey).then( function(response) {
+    console.log(response[selectedCarKey]); // 'response' will be the 'car objects' object
+    DOM.renderMileage(response[selectedCarKey]);
+  }, function(err) {
+    console.log(err); // Errors are logged in the console
+  });
 });
 
 //RETRIEVE ALL CARS 
@@ -106,7 +114,8 @@ $('body').on('submit','#js-update-mileage-form',function(event){
       // Call db object's method to update the mileage of a car
       db.updateMileage(uid, carKey, newMileage).then( function(response) {
         DOM.renderLastMaintenance(response);
-        // console.log(response); // 'response' is an object of updated mileage
+        DOM.renderMileage(response)
+        console.log(response); // 'response' is an object of updated mileage
       }, function(err) {
         console.log(err); // Errors are logged in the console
       });
