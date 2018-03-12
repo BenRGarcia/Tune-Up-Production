@@ -42,7 +42,6 @@ const vehicleApi = {
     return this._modelObjArray;
   },
   searchModel(year, make) {
-    console.log("Searching for models...");
     // Ignore 'falsy' 'make' arg passed
     if (make) {
       // Convert year argument to string (in case passed as type number)

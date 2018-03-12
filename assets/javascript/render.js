@@ -116,10 +116,8 @@ const DOM = {
   renderDropDownModels(modelArray) {
     // Ignore empty modelArrays
     if (modelArray) {
-      console.log(`if statement`);
       // Iterate over car models in array
       for (let i = 0; i < modelArray.length; i++) {
-        console.log(modelArray[i]);
         // Create new option element
         let option = $('<option>');
         // Add value attribute and inner text

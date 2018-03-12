@@ -84,7 +84,7 @@ $( function() {
     // Call db object's method to post new car to firebase database
     db.addNewCar(uid, year, make, model, mileage).then( function(response) {
         DOM.renderCars(response);
-        console.log(response); // 'response' will be the new car object created
+        // console.log(response); // 'response' will be the new car object created
       }, function(err) {
         console.log(err); // Errors are logged in the console
     });
