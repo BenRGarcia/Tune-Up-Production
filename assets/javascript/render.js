@@ -110,6 +110,10 @@ const DOM = {
     return object;
   },
   renderDropDownModels(modelArray) {
+    // Empty previous models if they exist
+    $('#js-add-car-model').empty();
+    $('#js-add-car-model').append('<option value="" disabled selected>Choose Model</option>');
+
     // Ignore empty modelArrays
     if (modelArray) {
       // Iterate over car models in array
