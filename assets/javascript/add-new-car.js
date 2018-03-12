@@ -67,26 +67,29 @@ $( function() {
     let model = $('#js-add-car-model').val();
     let mileage = $('#js-add-car-mileage').val();
 
-    // Reset values in form
-    $('#js-add-car-year').val("");
-    $('#js-add-car-make').val("");
-    $('#js-add-car-model').val("");
-    $('#js-add-car-mileage').val("");
+    // Ignore empty inputs
+    if (year && make && model && mileage) {
+      // Reset values in form
+      $('#js-add-car-year').val("");
+      $('#js-add-car-make').val("");
+      $('#js-add-car-model').val("");
+      $('#js-add-car-mileage').val("");
 
-    // Re-disable inputs
-    $('#js-add-car-make').attr("disabled", "disabled");
-    $('#js-add-car-model').attr("disabled", "disabled");
-    $('#js-add-car-mileage').attr("disabled", "disabled");
+      // Re-disable inputs
+      $('#js-add-car-make').attr("disabled", "disabled");
+      $('#js-add-car-model').attr("disabled", "disabled");
+      $('#js-add-car-mileage').attr("disabled", "disabled");
 
-    // Materialize CSS method to re-render dropdown options
-    $('select').material_select();
+      // Materialize CSS method to re-render dropdown options
+      $('select').material_select();
 
-    // Call db object's method to post new car to firebase database
-    db.addNewCar(uid, year, make, model, mileage).then( function(response) {
-        DOM.renderCars(response);
-        // console.log(response); // 'response' will be the new car object created
-      }, function(err) {
-        console.log(err); // Errors are logged in the console
-    });
+      // Call db object's method to post new car to firebase database
+      db.addNewCar(uid, year, make, model, mileage).then( function(response) {
+          initializeGarage();
+          // console.log(response); // 'response' will be the new car object created
+        }, function(err) {
+          console.log(err); // Errors are logged in the console
+      });
+    }
   });
 });
