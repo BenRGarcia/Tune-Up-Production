@@ -38,7 +38,7 @@ $('body').on('click',".js-car-in-garage",function(){
 
   // Call db object's method to return 'maintenanceInterval' object
   db.getLastMaintenance(uid, carKey).then( function(response) {
-    console.log(response); // 'response' will be the 'maintenanceInterval' object
+    // console.log(response); // 'response' will be the 'maintenanceInterval' object
     DOM.renderLastMaintenance(response);
   }, function(err) {
     console.log(err); // Errors are logged in the console
