@@ -157,19 +157,19 @@ $('body').on('submit','#js-update-interval-oil-change-form',function(event){
 });
 
 //UPDATE INTERVAL FOR TIRE ROTATION
-$('body').on('click','#js-update-interval-tire',function(event){
+$('body').on('submit','#js-update-interval-tire-rotation-form',function(event){
   event.preventDefault();
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
     // Get user input
-    let newInterval = $('#js-updated-interval-tire').val();
+    let newInterval = $('#js-update-interval-tire-rotation').val();
 
     // Ignore empty inputs
     if (newInterval) {
 
       // Reset form input to empty string
-      $('#js-updated-interval-tire').val("");
+      $('#js-update-interval-tire-rotation').val("");
 
       var uid = userAuth.getUid;
       var carKey = selectedCarKey;
@@ -190,19 +190,19 @@ $('body').on('click','#js-update-interval-tire',function(event){
 });
 
 //UPDATE INTERVAL FOR CAR INSPECTION
-$('body').on('click','#js-update-interval-inspection',function(event){
+$('body').on('submit','#js-update-interval-car-inspection-form',function(event){
   event.preventDefault();
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
     // Get user input
-    let newInterval = $('#js-updated-interval-inspection').val();
+    let newInterval = $('#js-update-interval-car-inspection').val();
 
     // Ignore empty inputs
     if (newInterval) {
 
       // Reset form input to empty string
-      $('#js-updated-interval-inspection').val("");
+      $('#js-update-interval-car-inspection').val("");
 
       var uid = userAuth.getUid;
       var carKey = selectedCarKey;
@@ -223,19 +223,19 @@ $('body').on('click','#js-update-interval-inspection',function(event){
 });
 
 //UPDATE INTERVAL FOR WIPER BLADES
-$('body').on('click','#js-update-interval-wipers',function(event){
+$('body').on('submit','#js-update-interval-wiper-blades-form',function(event){
   event.preventDefault();
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
     // Get user input
-    let newInterval = $('#js-updated-interval-wipers').val();
+    let newInterval = $('#js-update-interval-wiper-blades').val();
 
     // Ignore empty inputs
     if (newInterval) {
 
       // Reset form input to empty string
-      $('#js-updated-interval-wipers').val("");
+      $('#js-update-interval-wiper-blades').val("");
 
       var uid = userAuth.getUid;
       var carKey = selectedCarKey;
@@ -256,19 +256,19 @@ $('body').on('click','#js-update-interval-wipers',function(event){
 });
 
 //UPDATE INTERVAL FOR BRAKES
-$('body').on('click','#js-update-interval-brakes',function(event){
+$('body').on('submit','#js-update-interval-brake-inspection-form',function(event){
   event.preventDefault();
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
     // Get user input
-    let newInterval = $('#js-updated-interval-brakes').val();
+    let newInterval = $('#js-update-interval-brake-inspection').val();
 
     // Ignore empty inputs
     if (newInterval) {
 
       // Reset form input to empty string
-      $('#js-updated-interval-brakes').val("");
+      $('#js-update-interval-brake-inspection').val("");
 
       var uid = userAuth.getUid;
       var carKey = selectedCarKey;
@@ -289,19 +289,19 @@ $('body').on('click','#js-update-interval-brakes',function(event){
 });
 
 //UPDATE LAST MAINTENANCE FOR OIL
-$('body').on('click','#js-update-interval-brakes',function(event){
+$('body').on('submit','#js-update-last-oil-change-form',function(event){
   event.preventDefault();
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
     // Get user input
-    let mileage = $('#js-last-oil-mileage').val();
+    let mileage = $('#js-update-last-oil-change').val();
 
     // Ignore empty inputs
     if (mileage) {
 
       // Reset form input to empty string      
-      $('#js-last-oil-mileage').val("");
+      $('#js-update-last-oil-change').val("");
 
       var uid = userAuth.getUid;
       var carKey = selectedCarKey;
@@ -318,19 +318,19 @@ $('body').on('click','#js-update-interval-brakes',function(event){
 });
 
 //UPDATE LAST MAINTENANCE FOR TIRES
-$('body').on('click','#js-last-tire',function(event){
+$('body').on('submit','#js-update-last-tire-rotation-form',function(event){
   event.preventDefault();
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
     // Get user input
-    let mileage = $('#js-last-tire-mileage').val();
+    let mileage = $('#js-update-last-tire-rotation').val();
 
     // Ignore empty input
     if (mileage) {
 
       // Reset form input to empty string   
-      $('#js-last-tire-mileage').val("");
+      $('#js-update-last-tire-rotation').val("");
 
       var uid = userAuth.getUid;
       var carKey = selectedCarKey;
@@ -347,19 +347,19 @@ $('body').on('click','#js-last-tire',function(event){
 });
 
 //UPDATE LAST MAINTENANCE FOR CAR INSPECTION
-$('body').on('click','#js-last-inspection',function(event){
+$('body').on('submit','#js-update-last-car-inspection-form',function(event){
   event.preventDefault();
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
     // Get user input
-    let date = $('#js-last-inspection-date').val();
+    let date = $('#js-update-last-car-inspection').val();
 
     // Ignore empty inputs
     if (date) {
 
       // Reset form input to empty string
-      $('#js-last-inspection-date').val("");
+      $('#js-update-last-car-inspection').val("");
 
       // Use moment.js to convert to Unix Time
       let unixDate = dateConverter.mmddyyyyToUnixTime(date); // = 'date' converted to a unix date with moment.js
@@ -379,19 +379,19 @@ $('body').on('click','#js-last-inspection',function(event){
 });
 
 //UPDATE LAST MAINTENANCE FOR WIPER BLADES
-$('body').on('click','#js-last-wiper',function(event){
+$('body').on('submit','#js-update-last-wiper-blades-form',function(event){
   event.preventDefault();
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
     // Get user input
-    let date = $('#js-last-wiper-date').val();
+    let date = $('#js-update-last-wiper-blades').val();
 
     // Ignore empty input
     if (date) {
 
       // Reset form input to empty string
-      $('#js-last-wiper-date').val("");
+      $('#js-update-last-wiper-blades').val("");
 
       // Use moment.js to convert to Unix Time
       let unixDate = dateConverter.mmddyyyyToUnixTime(date); // = 'date' converted to a unix date with moment.js
@@ -411,19 +411,19 @@ $('body').on('click','#js-last-wiper',function(event){
 });
 
 //UPDATE LAST MAINTENANCE FOR BRAKES
-$('body').on('click','#js-last-brake',function(event){
+$('body').on('submit','#js-update-last-brake-inspection-form',function(event){
   event.preventDefault();
 
   // Ignore inputs if car not yet selected
   if (selectedCarKey) {
     // Get user input
-    let date = $('#js-last-brake-date').val();
+    let date = $('#js-update-last-brake-inspection').val();
 
     // Ignore empty input
     if (date) {
 
       // Reset form input to empty string
-      $('#js-last-brake-date').val("");
+      $('#js-update-last-brake-inspection').val("");
 
       // Use moment.js to convert to Unix Time
       let unixDate = dateConverter.mmddyyyyToUnixTime(date); // = 'date' converted to a unix date with moment.js
