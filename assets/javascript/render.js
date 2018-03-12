@@ -1,7 +1,10 @@
 const DOM = {
   renderCars(carsObject) {
-    // Make new div
-    let div = $('<div>');
+
+    // Empty preexisting list
+    $('#js-garage').empty();
+
+    
 
     // Ignore empty object
     if (carsObject) {
@@ -9,25 +12,65 @@ const DOM = {
       // Iterate over car objects
       for (let key in carsObject) {
 
-        // Declare carKey variable
-        let carKey = key;
-
         // Strip out year, make, model from object
         let year = carsObject[key].year;
         let make = carsObject[key].make;
         let model = carsObject[key].model;
 
+        // Declare carKey variable
+        let carKey = key;
+
+        // Assemble nested elements with Materialize classes
+        let     li = $('<li>');
+        let button = $('<button>');
+        let      a = $('<a>');
+        let      i = $('<i>');
+        // Make new div
+        let div = $('<div>');
+
+        li.addClass("collection-item");
+        button.addClass("btn-large js-car-in-garage wide mb-1");
+        button.text(year + " " + make + " " + model);
+        button.data("car-key", carKey);
+        a.data("car-key", carKey);
+        a.addClass("secondary-content js-delete-car");
+        a.attr("href", "#");
+        i.addClass("material-icons");
+        i.text("delete");
+
+        a.append(i);
+        div.append(button);
+        div.append(a);
+        li.append(div);
+
+        console.log(li);
+
         // Add attributes and text
-        div.data("car-key", carKey);
+/*        div.data("car-key", carKey);
         div.addClass("js-display-car-details");
-        div.text(year, make, model);
+        div.text(year, make, model);*/
 
         // Append div to car display area
-        $('.js-display-car-details').append(div);
+        $('#js-garage').append(div);
+
       }
       // After all cars rendered
       return carsObject;
+
+/*
+    <li class="collection-item">
+      <div>
+        <button data-car-key="" class="btn-large js-car-in-garage">2015 Honda Civic</button>
+        <a data-car-key="" href="#" class="secondary-content js-delete-car">
+          <i class="material-icons">delete</i>
+        </a>
+      </div>
+    </li>
+*/
     }
+
+    // Make new div
+    let div = $('<div>');
 
     // If car object was empty
     div.text('Click "+" To Add New Car');
