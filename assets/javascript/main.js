@@ -9,10 +9,11 @@ $(function() {
 function initializeGarage() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user){
-      var uid = userAuth.getUid;
+      var uid = user.uid;
+      console.log(uid);
       // Call db object's method to return an object of all of user's car objects
       db.getAllUserCars(uid).then( function(response) {
-        // console.log(response); // 'response' will be an object of car objects
+        console.log(response); // 'response' will be an object of car objects
         DOM.renderCars(response);
       }, function(err) {
       console.log(err); // Errors are logged in the console
