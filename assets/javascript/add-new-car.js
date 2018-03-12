@@ -39,8 +39,9 @@ $( function() {
       let year = $(this).val();
       let make = $('#js-add-car-make').val();
       // Call API to retrieve models
-      vehicleApi.searchModel(year, make).then( response => {
-        console.log(response);
+      vehicleApi.searchModel(year, make).then( models => {
+        // Append response array to dropdown options
+        DOM.renderDropDownModels(models);
       }, err => {
         console.log(err);
       });
@@ -54,8 +55,9 @@ $( function() {
       let make = $(this).val();
       let year = $('#js-add-car-year').val();
       // Call API to retrieve models
-      vehicleApi.searchModel(year, make).then( response => {
-        console.log(response);
+      vehicleApi.searchModel(year, make).then( models => {
+        // Append response array to dropdown options
+        DOM.renderDropDownModels(models);
       }, err => {
         console.log(err);
       });
