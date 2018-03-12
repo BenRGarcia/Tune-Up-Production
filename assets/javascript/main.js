@@ -143,13 +143,11 @@ $('body').on('submit','#js-update-interval-oil-change-form',function(event){
      
       // Call db object's method to update the maintenance interval for oil
       db.updateIntervalOilChange(uid, carKey, newInterval).then( function(response) {
-        // DOM.renderMaintenanceIntervals(response);
-
         db.getMaintenanceIntervals(uid, carKey).then( function(response) {
-          DOM.renderMaintenanceIntervals(response)
-        }, function (err) {
-          console.log(err)
-        });
+        DOM.renderMaintenanceIntervals(response)
+      }, function (err) {
+        console.log(err)
+      });
         // console.log(response); // 'response' is an object of updated interval for oil
       }, function(err) {
         console.log(err); // Errors are logged in the console
@@ -178,7 +176,11 @@ $('body').on('click','#js-update-interval-tire',function(event){
 
       // Call db object's method to update the maintenance interval for oil
       db.updateIntervalTireRotation(uid, carKey, newInterval).then( function(response) {
-        DOM.renderMaintenanceIntervals(response);
+        db.getMaintenanceIntervals(uid, carKey).then( function(response) {
+        DOM.renderMaintenanceIntervals(response)
+      }, function (err) {
+        console.log(err)
+      });
         console.log(response); // 'response' is an object of updated interval for oil
       }, function(err) {
         console.log(err); // Errors are logged in the console
@@ -207,7 +209,11 @@ $('body').on('click','#js-update-interval-inspection',function(event){
 
       // Call db object's method to update the maintenance interval for car inspection
       db.updateIntervalCarInspection(uid, carKey, newInterval).then( function(response) {
-        DOM.renderMaintenanceIntervals(response);
+        db.getMaintenanceIntervals(uid, carKey).then( function(response) {
+        DOM.renderMaintenanceIntervals(response)
+      }, function (err) {
+        console.log(err)
+      });
         console.log(response); // 'response' is an object of updated interval for car inspection months
       }, function(err) {
         console.log(err); // Errors are logged in the console
@@ -236,7 +242,11 @@ $('body').on('click','#js-update-interval-wipers',function(event){
 
       // Call db object's method to update the maintenance interval for wiper blades
       db.updateIntervalWiperBlades(uid, carKey, newInterval).then( function(response) {
-        DOM.renderMaintenanceIntervals(response);
+        db.getMaintenanceIntervals(uid, carKey).then( function(response) {
+        DOM.renderMaintenanceIntervals(response)
+      }, function (err) {
+        console.log(err)
+      });
         console.log(response); // 'response' is an object of updated interval for wiper blades
       }, function(err) {
         console.log(err); // Errors are logged in the console
@@ -265,7 +275,11 @@ $('body').on('click','#js-update-interval-brakes',function(event){
 
       // Call db object's method to update the maintenance interval for brake inspections
       db.updateIntervalBrakeInspection(uid, carKey, newInterval).then( function(response) {
-        DOM.renderMaintenanceIntervals(response);
+        db.getMaintenanceIntervals(uid, carKey).then( function(response) {
+        DOM.renderMaintenanceIntervals(response)
+      }, function (err) {
+        console.log(err)
+      });
         console.log(response); // 'response' is an object of updated interval for brake inspection
       }, function(err) {
         console.log(err); // Errors are logged in the console
